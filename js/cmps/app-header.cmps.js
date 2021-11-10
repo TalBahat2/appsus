@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 import { eventBus } from '../services/event-bus-service.js';
+=======
+// import { eventBus } from '../services/event-bus-service.js';
+>>>>>>> 537717f98dceb576b93593b38a5c72983016d2da
 
 export default {
     template: `
