@@ -1,0 +1,40 @@
+@import "parts/helpers.css";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.main-layout {
+    max-width: 800px;
+    margin: auto;
+}
+
+.app-header {
+    height: 10vh;
+    background-color: rgb(87, 183, 221);
+}
+
+.app-header .header-elements {
+    height: 100%;
+    padding: 10px 0;
+    
+}
+
+.main-page {
+    background-color: aqua;
+    min-height: 85vh;
+}
+
+.app-footer {
+    height: 5vh;
+    padding: 10px;
+    background-color: rgb(87, 183, 221);
+}
