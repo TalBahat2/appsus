@@ -25,7 +25,9 @@ export default {
         }
     },
     methods: {
-        
+        openEmail(email) {
+            
+        }
     }
     
 }
