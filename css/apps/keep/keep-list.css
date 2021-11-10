@@ -1,0 +1,21 @@
+
+.note-preview-container{
+    font-size: 18px;
+    padding: 10px;
+    background-color: lightgoldenrodyellow;
+    border: 1px solid black;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note-list{
+    margin: 0;
+    padding: 20px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
