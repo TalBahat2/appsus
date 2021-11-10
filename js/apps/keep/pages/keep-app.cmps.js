@@ -10,7 +10,7 @@ export default {
     template: `
         <section class="keep-app">
             <h3>keep-app</h3>
-            <note-add />
+            <note-add @addNote="addNote" />
             <note-list :notes="notes" />
         </section>
     `,
@@ -25,7 +25,13 @@ export default {
     methods: {
         loadNotes() {
             noteService.query()
-                .then(notes => this.notes = notes);
+                .then(notes => {
+                    console.log('notes from query', notes);
+                    this.notes = notes});
         },
+        addNote(note){
+            noteService.createNote(note)
+                .then(()=> this.loadNotes())
+        }
     }
 }
