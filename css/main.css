@@ -1,4 +1,5 @@
 @import "parts/helpers.css";
+@import "cmps/user-msg.css";
 
 * {
     box-sizing: border-box;
