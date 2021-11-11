@@ -1,6 +1,7 @@
 import noteTxt from "./note-txt.cmp.js"
 import noteImg from "./note-img.cmp.js"
 import noteVid from "./note-vid.cmp.js"
+import noteTodos from "./note-todo.cmp.js"
 import { eventBus } from "../../../services/event-bus-service.js"
 
 export default{
@@ -9,6 +10,7 @@ export default{
         noteTxt,
         noteImg,
         noteVid,
+        noteTodos
     },
     template:`
         <div class="note-preview">

@@ -4,8 +4,8 @@ export default {
     components: {
     },
     template:`
-        <div class="note-preview">
+        <section class="note-preview">
             <img :src="note.info.url" />
-        </div>
+        </section>
     `,
 }
