@@ -7,7 +7,8 @@ export default {
             <p class="body">{{email.body}}</p>
             <p class="sender">{{email.from}}</p>
             <p class="status">{{email.status}}</p>
-            <button @click="removeToTrash">delete</button>
+            <button @click="removeToTrash">Delete</button>
+            <router-link :to="'/email'">back to emails</router-link>
         </section>
     `,
     data() {
@@ -22,9 +23,14 @@ export default {
     },
     methods: {
         removeToTrash() {
-            emailService.removeToTrash(this.email)
-                .then(updatedEmail => this.email = updatedEmail)
-            // TODO: pop a userMsg that email has been removed to trash
+            if (this.email.status !== 'trash') {
+                emailService.removeToTrash(this.email)
+                    .then(updatedEmail => this.email = updatedEmail)
+                // TODO: pop a userMsg that email has been removed to trash
+            } else {
+                // delete forever
+                // move to inbox
+            }
         }
     }
 }

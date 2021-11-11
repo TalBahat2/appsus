@@ -10,4 +10,24 @@
 
 .emails-folder-list {
     padding-inline-end: 20px;
+    padding-top: 10px;
+}
+
+.emails-folder-list:hover {
+    cursor: pointer;
+}
+
+.emails-folder-list > * {
+    width: 100px;
+}
+
+.emails-folder-list > :not(:first-child){
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(247, 247, 253);
+    border: 1px solid grey;
+}
+
+.emails-filter {
+    padding: 10px;
 }

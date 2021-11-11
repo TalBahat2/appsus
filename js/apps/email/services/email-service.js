@@ -2,16 +2,20 @@ import { storageService } from '../../../services/async-storage-service.js';
 import { utilService } from '../../../services/util-service.js';
 
 const EMAILS_KEY = 'emails'
+const FILTER_KEY = 'filter'
 _createEmails();
+_createFilter();
 
 export const emailService = {
     query,
     getById,
-    removeToTrash
+    removeToTrash,
+    save
 }
 
-function query() {
-    return storageService.query(EMAILS_KEY);
+function query(key) {
+    if (key === 'emails') return storageService.query(EMAILS_KEY);
+    if (key === 'filter') return storageService.query(FILTER_KEY);
 }
 
 function getById(emailId) {
@@ -21,6 +25,11 @@ function getById(emailId) {
 function removeToTrash(email) {
     email.status = 'trash';
     return storageService.put(EMAILS_KEY, email);
+}
+
+function save(key, entity) {
+    if(key === 'emails') storageService.put(EMAILS_KEY, entity);
+    if(key === 'filter') storageService.put(FILTER_KEY, entity);
 }
 
 function _createEmails() {
@@ -35,7 +44,7 @@ function _createEmails() {
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
                 status: 'inbox',
-                to: 'user@appsus.com'                     
+                to: 'user@appsus.com'
             },
             {
                 id: 'e102',
@@ -44,7 +53,7 @@ function _createEmails() {
                 isRead: true,
                 sentAt: 1551133930655,
                 from: 'puki@puki.com',
-                status: 'inbox',               
+                status: 'inbox',
                 to: 'user@appsus.com'
             },
             {
@@ -54,10 +63,25 @@ function _createEmails() {
                 isRead: true,
                 sentAt: 1551134930655,
                 from: 'user@appsus.com',
-                status: 'sent',               
+                status: 'inbox',
                 to: 'puki@puki.com'
             }
         ]
     }
     utilService.saveToStorage(EMAILS_KEY, emails);
+}
+
+function _createFilter() {
+    var filter = utilService.loadFromStorage(FILTER_KEY);
+    if (!filter) {
+        filter = [{
+            id: 'filter',
+            status: 'inbox',
+            txt: '',
+            isRead: 'all',
+            isStarred: 'all',
+            labels: []
+        }]
+    }
+    utilService.saveToStorage(FILTER_KEY, filter);
 }

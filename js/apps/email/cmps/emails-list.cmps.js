@@ -6,7 +6,7 @@ export default {
         emailPreview
     },
     template: `
-        <ul v-if="emails && emails.length" class="emails-list">
+        <ul class="emails-list">
             <email-preview v-for="email in emails" :email="email" :key="email.id" />
         </ul>
         
