@@ -7,7 +7,6 @@ export default {
         <div class="note-preview">
             <p>{{note.info.txt}}</p>
             <p>{{note.type}}</p>
-            hi hi hi
         </div>
     `,
 }

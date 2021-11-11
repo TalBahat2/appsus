@@ -8,7 +8,7 @@ const demoNotes = [
         type: "noteTxt",
         isPinned: true,
         info: {
-            txt: "Fullstack Me Baby!"
+            txt: "Fullstack Me Baby 1!"
         }
     },
     {
@@ -16,7 +16,23 @@ const demoNotes = [
         type: "noteTxt",
         isPinned: false,
         info: {
-            txt: "Fullstack Me Baby!"
+            txt: "Fullstack Me Baby 2!"
+        }
+    },
+    {
+        id: "n103",
+        type: "noteImg",
+        isPinned: false,
+        info: {
+            url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131603.jpg"
+        }
+    },
+    {
+        id: "n104",
+        type: "noteTxt",
+        isPinned: false,
+        info: {
+            txt: "Fullstack Me Baby 4!"
         }
     },
 ]
@@ -25,13 +41,20 @@ export const noteService = {
     query,
     save,
     createNote,
+    remove,
+}
+
+function _demoData(){
+    demoNotes.forEach(note=>{
+        save(note);
+    })
 }
 
 function query() {
     return storageService.query(NOTES_KEY)
         .then(notes => {
-            console.log(notes);
             if (notes.length === 0) {
+                _demoData()
                 return demoNotes
             }
             return notes;
@@ -39,7 +62,7 @@ function query() {
 }
 
 function save(note) {
-    return storageService.post(NOTES_KEY, note)
+    return storageService.postFirst(NOTES_KEY, note)
 }
 
 function createNote(note) {
@@ -53,4 +76,8 @@ function createNote(note) {
         info: info,
     }
     return save(newNote);
+}
+
+function remove(noteId) {
+    return storageService.remove(NOTES_KEY, noteId);
 }
