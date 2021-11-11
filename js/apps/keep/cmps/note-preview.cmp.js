@@ -9,16 +9,18 @@ export default{
     },
     template:`
         <div class="note-preview">
-            <!-- <component :is="comp" /> -->
-            <p>{{note.info.txt}}</p>
-            <p>{{note.type}}</p>
-            <note-txt />
+            <component :is="comp" :note="note" />
+            <!-- <p>{{note.info.txt}}</p>
+            <p>{{note.type}}</p> -->
         </div>
     `,
     data(){
         return{
-            comp: 'noteTxt'
+            comp: null
         }
+    },
+    created() {
+        this.comp = this.note.type;
     },
     computed: {
         
