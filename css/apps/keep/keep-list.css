@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
 
 .note-list{
@@ -18,4 +19,9 @@
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
+    align-items: flex-start;
+}
+
+.note-preview img{
+    height: 100px;
 }

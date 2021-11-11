@@ -8,10 +8,16 @@ export default {
     template: `
         <section class="note-list">
             <div v-for="note in notes" :key="note.id" class="note-preview-container">
-            <note-preview :note="note" />
+                <note-preview :note="note" />
+                
             </div>
         </section>
     `,
+    data(){
+        return{
+            
+        }
+    },
     methods: {
         
     }

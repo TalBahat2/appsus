@@ -4,7 +4,6 @@ export default {
     },
     template: `
         <section class="note-add">
-            <h3>adding note</h3>
             <form @submit.prevent="add">
                 <input type="text" v-model="input">
                 <span @click="noteType='note-txt'">Text/</span>

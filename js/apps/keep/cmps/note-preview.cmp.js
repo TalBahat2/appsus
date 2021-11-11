@@ -1,5 +1,6 @@
 import noteTxt from "./note-txt.cmp.js"
 import noteImg from "./note-img.cmp.js"
+import { eventBus } from "../../../services/event-bus-service.js"
 
 export default{
     props: ['note'],
@@ -10,8 +11,10 @@ export default{
     template:`
         <div class="note-preview">
             <component :is="comp" :note="note" />
-            <!-- <p>{{note.info.txt}}</p>
-            <p>{{note.type}}</p> -->
+            <div>
+                <button @click="remove(note)">X</button>
+                <button @click="edit(note)">edit</button>
+            </div>
         </div>
     `,
     data(){
@@ -22,7 +25,15 @@ export default{
     created() {
         this.comp = this.note.type;
     },
-    computed: {
-        
+    methods: {
+        remove(note){
+            eventBus.$emit('remove', note.id)
+        },
+        edit(note){
+            if(note.type === 'note-txt'){
+
+            }
+            // eventBus.$emit('edit', note)
+        },
     },
 }
