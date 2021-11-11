@@ -1,15 +1,13 @@
 import { emailService } from '../services/email-service.js'
-import emailPreview from '../cmps/email-preview.cmps.js'
+import emailsList from '../cmps/emails-list.cmps.js'
 
 export default {
     components: {
-        emailPreview
+        emailsList
     },
     template: `
         <section class="email-app">
-            <ul v-if="emails && emails.length" class="emails-list">
-                <email-preview v-for="email in emails" :email="email" :key="email.id"></email-preview>
-            </ul>
+            <emails-list v-if="emails && emails.length" :emails="emails" />
             <div v-else>no emails to show</div>
         </section>
     `,
