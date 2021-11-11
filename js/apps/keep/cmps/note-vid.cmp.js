@@ -5,7 +5,8 @@ export default {
     },
     template:`
         <div class="note-preview">
-            <img :src="note.info.url" />
+            <video controls="controls" :src="note.info.url" type="video/mp4" >
+            </video>
         </div>
     `,
 }
