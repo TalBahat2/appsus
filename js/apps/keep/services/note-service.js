@@ -13,10 +13,10 @@ const demoNotes = [
     },
     {
         id: "n102",
-        type: "noteTxt",
+        type: "noteImg",
         isPinned: false,
         info: {
-            txt: "Fullstack Me Baby 2!"
+            url: "https://media.giphy.com/media/26u4lwog9FVOxUGiI/giphy.gif"
         }
     },
     {
@@ -29,53 +29,59 @@ const demoNotes = [
     },
     {
         id: "n104",
-        type: "noteTxt",
+        type: "noteVid",
         isPinned: false,
         info: {
-            txt: "Fullstack Me Baby 4!"
+            url: "https://www.youtube.com/watch?v=0uHCMt3wm04"
         }
     },
 ]
+_createDemoNotes()
 
 export const noteService = {
     query,
-    save,
+    saveNewNote,
+    saveEditedNote,
     createNote,
     remove,
 }
 
-function _demoData(){
-    demoNotes.forEach(note=>{
-        save(note);
-    })
+function _createDemoNotes(){ 
+    return storageService.query(NOTES_KEY)
+        .then(notes=>{
+            if(notes.length === 0) utilService.saveToStorage(NOTES_KEY,demoNotes)
+        })
 }
 
 function query() {
     return storageService.query(NOTES_KEY)
-        .then(notes => {
-            if (notes.length === 0) {
-                _demoData()
-                return demoNotes
-            }
-            return notes;
-        })
+        // .then(notes => {
+            // if (notes.length === 0) {
+            //     _createDemoNotes()
+            //     return demoNotes
+            // }
+            // return notes;
+        // })
 }
 
-function save(note) {
+function saveNewNote(note) {
     return storageService.postFirst(NOTES_KEY, note)
 }
 
+function saveEditedNote(note){
+    storageService.put(NOTES_KEY,note)
+}
+
 function createNote(note) {
-    // const id = utilService.makeId();
     let info;
-    if (note.noteType === 'note-txt') info = { txt: note.input }
-    else if (note.noteType === 'note-img' || note.noteType === 'note-vid') info = { url: note.input }
-    else if (note.noteType === 'note-todos') info = { lable: note.input }
+    if (note.noteType === 'noteTxt') info = { txt: note.input }
+    else if (note.noteType === 'noteImg' || note.noteType === 'noteVid') info = { url: note.input }
+    else if (note.noteType === 'noteTodos') info = { lable: note.input }
     const newNote = {
         type: note.noteType,
         info: info,
     }
-    return save(newNote);
+    return saveNewNote(newNote);
 }
 
 function remove(noteId) {

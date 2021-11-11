@@ -5,10 +5,10 @@ export default {
     template: `
         <section class="note-add">
             <form @submit.prevent="add">
-                <input type="text" v-model="input">
-                <span @click="noteType='note-txt'">Text/</span>
-                <span @click="noteType='note-img'">Image/</span>
-                <span @click="noteType='note-vid'">Video</span>
+                <input type="text" :placeholder="placeHolder" v-model="input">
+                <span @click="changeNoteType('noteTxt')">Text/</span>
+                <span @click="changeNoteType('noteImg')">Image/</span>
+                <span @click="changeNoteType('noteVid')">Video</span>
                 <button>Add</button>
             </form>
         </section>
@@ -16,12 +16,21 @@ export default {
     data() {
         return {
             input: '',
-            noteType: 'note-txt',
+            noteType: 'noteTxt',
+            placeHolder: 'whats on your mind?'
         }
     },
     methods: {
         add(){
             this.$emit('addNote',{input:this.input,noteType:this.noteType})
+            this.input = ''
+        },
+        changeNoteType(type){
+            if(type === 'noteTxt'){
+                this.placeHolder = 'whats on your mind?'
+            }else if(type === 'noteImg' || type === 'noteVid'){ 
+                this.placeHolder = 'Type a URL address'
+            }
         }
     },
     watch: {
