@@ -3,7 +3,7 @@ export default {
     template: `
         <li class="email-preview flex space-between" @click="readMore(email)">
             <div class="from">{{senderName}}</div>
-            <div class="title">{{email.subject}}</div>
+            <div class="title" :style="">{{email.subject}}</div>
             <div class="body">{{email.body}}</div>
             <div class="sent-at">{{formattedDate}}</div>
             <router-link :to="emailLink">open</router-link>
@@ -11,6 +11,7 @@ export default {
     `,
     data() {
         return {
+
         }
     },
     computed: {
@@ -26,6 +27,11 @@ export default {
         },
         emailLink() {
             return '/email/' + this.email.id;
+        },
+        styleObject() {
+            return {
+                isReadFont: (this.email.isRead) ? '' :''
+            }
         }
     },
     methods: {
