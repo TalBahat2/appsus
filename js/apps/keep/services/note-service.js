@@ -35,6 +35,18 @@ const demoNotes = [
             url: "https://www.youtube.com/watch?v=0uHCMt3wm04"
         }
     },
+    {
+        id: "n105",
+        type: "noteTodos",
+        isPinned: false,
+        info: {
+            label: "do this and do that",
+            todos: [
+                {txt: 'finish this code!', isDone: false},
+                {txt: 'Go to the Bar-Mizva', isDone: true}
+            ]
+        }
+    },
 ]
 _createDemoNotes()
 
