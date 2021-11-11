@@ -6,7 +6,8 @@ _createEmails();
 
 export const emailService = {
     query,
-    getById
+    getById,
+    removeToTrash
 }
 
 function query() {
@@ -15,6 +16,11 @@ function query() {
 
 function getById(emailId) {
     return storageService.get(EMAILS_KEY, emailId);
+}
+
+function removeToTrash(email) {
+    email.status = 'trash';
+    return storageService.put(EMAILS_KEY, email);
 }
 
 function _createEmails() {
@@ -27,7 +33,9 @@ function _createEmails() {
                 body: 'Would love to catch up sometimes',
                 isRead: false,
                 sentAt: 1551133930594,
-                from: 'momo@momo.com'
+                from: 'momo@momo.com',
+                status: 'inbox',
+                to: 'user@appsus.com'                     
             },
             {
                 id: 'e102',
@@ -35,7 +43,19 @@ function _createEmails() {
                 body: 'Lets go to the beach',
                 isRead: true,
                 sentAt: 1551133930655,
-                from: 'puki@puki.com'
+                from: 'puki@puki.com',
+                status: 'inbox',               
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e103',
+                subject: 'number3!',
+                body: 'hello',
+                isRead: true,
+                sentAt: 1551134930655,
+                from: 'user@appsus.com',
+                status: 'sent',               
+                to: 'puki@puki.com'
             }
         ]
     }

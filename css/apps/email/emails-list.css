@@ -7,3 +7,7 @@
 .email-preview {
     padding: 10px;
 }
+
+.emails-folder-list {
+    padding-inline-end: 20px;
+}

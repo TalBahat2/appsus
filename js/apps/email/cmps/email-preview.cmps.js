@@ -2,16 +2,16 @@ export default {
     props: ['email'],
     template: `
         <li class="email-preview flex space-between" @click="readMore(email)">
-            <div class="from">{{senderName}}</div>
-            <div class="title" :style="">{{email.subject}}</div>
+            <div class="from" :style="styleObject">{{senderName}}</div>
+            <div class="title" :style="styleObject">{{email.subject}}</div>
             <div class="body">{{email.body}}</div>
-            <div class="sent-at">{{formattedDate}}</div>
+            <div class="sent-at" :style="styleObject">{{formattedDate}}</div>
             <router-link :to="emailLink">open</router-link>
         </li>
     `,
     data() {
         return {
-
+            
         }
     },
     computed: {
@@ -30,7 +30,7 @@ export default {
         },
         styleObject() {
             return {
-                isReadFont: (this.email.isRead) ? '' :''
+                'font-family': (this.email.isRead) ? 'roboto-light, sans-serif' :'roboto-medium, sans-serif'
             }
         }
     },
