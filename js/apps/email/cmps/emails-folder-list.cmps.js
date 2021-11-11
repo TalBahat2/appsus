@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         filter(status) {
-            eventBus.$emit('changeStatus', status);
+            eventBus.$emit('filter', 'status', status);
         }
     }
 }

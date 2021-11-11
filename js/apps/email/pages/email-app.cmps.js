@@ -3,19 +3,23 @@ import emailsList from '../cmps/emails-list.cmps.js'
 import emailsFilter from '../cmps/emails-filter.cmps.js'
 import emailsFolderList from '../cmps/emails-folder-list.cmps.js'
 import { eventBus } from '../../../services/event-bus-service.js'
+// import emailCompose from '../cmps/email-compose.cmps.js'
 
 export default {
     components: {
         emailsList,
         emailsFilter,
-        emailsFolderList
+        emailsFolderList,
+        // emailCompose
     },
     template: `
         <section class="email-app">
             <emails-filter />
             <section class="flex">
                 <emails-folder-list />
-                <emails-list v-if="emails && emails.length" :emails="emailsToShow" />
+                <!-- <email-compose /> -->
+                <!-- {{emails}} -->
+                <emails-list v-if="emails && emails.length" :emails="emails" />
                 <div v-else>no emails to show</div>
             </section>
         </section>
@@ -23,53 +27,31 @@ export default {
     data() {
         return {
             emails: null,
-            filterBy: null
+            filterBy: {
+                status: 'inbox',
+                txt: '',
+                isRead: 'all',
+                isStarred: 'all',
+                labels: []
+            }
         }
     },
     created() {
-        emailService.query('emails')
+        emailService.query(this.filterBy)
             .then(emails => this.emails = emails);
-        emailService.query('filter')
-            .then(filter => this.filterBy = filter[0]);
-        eventBus.$on('filtered', this.setFilter);
-        eventBus.$on('changeStatus', this.changeStatus);
+        eventBus.$on('filter', this.filter);
+        eventBus.$on('deleteEmail', this.deleteEmail);
     },
     methods: {
-        setFilter(filterBy) {
-            this.filterBy.txt = filterBy.txt;
-            this.filterBy.isRead = filterBy.isRead;
-            this.filterBy.isStarred = filterBy.isStarred;
-            this.filterBy.labels = filterBy.labels;
-            emailService.save('filter', this.filterBy);
+        filter(key, value) {
+            this.filterBy[key] = value;
+            emailService.query(this.filterBy)
+                .then(emails => this.emails = emails)
         },
-        changeStatus(status) {
-            this.filterBy.status = status;
-            emailService.save('filter', this.filterBy);
+        deleteEmail(emailId) {
+            emailService.deleteEmail(emailId);
         }
     },
     computed: {
-        emailsToShow() {
-            if (!this.filterBy) return this.emails;
-            var { status, txt, isRead, isStarred, labels } = this.filterBy;
-            var emailsToShow = this.emails.filter(email => email.status === status)
-            console.log('this.filterBy',this.filterBy);
-            if (txt) {
-                txt = txt.toLowerCase();
-                emailsToShow = emailsToShow.filter(email =>
-                    email.subject.toLowerCase().includes(txt)
-                    || email.body.toLowerCase().includes(txt)
-                    || email.from.toLowerCase().includes(txt)
-                    || email.to.toLowerCase().includes(txt)
-                )
-            }
-            if (isRead !== 'all') {
-                emailsToShow = emailsToShow.filter(email =>
-                    (email.isRead && isRead === 'read')
-                    || (!email.isRead && isRead === 'unRead')
-                )
-            }
-            // TODO: add filter by starred and by lables
-            return emailsToShow;
-        }
     },
 }

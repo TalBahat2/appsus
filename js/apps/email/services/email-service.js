@@ -2,34 +2,52 @@ import { storageService } from '../../../services/async-storage-service.js';
 import { utilService } from '../../../services/util-service.js';
 
 const EMAILS_KEY = 'emails'
-const FILTER_KEY = 'filter'
 _createEmails();
-_createFilter();
 
 export const emailService = {
     query,
     getById,
-    removeToTrash,
-    save
+    moveToTrash,
+    deleteEmail
 }
 
-function query(key) {
-    if (key === 'emails') return storageService.query(EMAILS_KEY);
-    if (key === 'filter') return storageService.query(FILTER_KEY);
+function query(filterBy) {
+    var allEmailsPromise = storageService.query(EMAILS_KEY);
+    // if (!filterBy) return allEmailsPromise;
+    var { status, txt, isRead, isStarred, labels } = filterBy;
+    return allEmailsPromise.then(emails => {
+        emails = emails.filter(email => email.status === status)
+        if (txt) {
+            txt = txt.toLowerCase();
+            emails = emails.filter(email =>
+                email.subject.toLowerCase().includes(txt)
+                || email.body.toLowerCase().includes(txt)
+                || email.from.toLowerCase().includes(txt)
+                || email.to.toLowerCase().includes(txt)
+            )
+        }
+        if (isRead !== 'all') {
+            emails = emails.filter(email =>
+                (email.isRead && isRead === 'read')
+                || (!email.isRead && isRead === 'unRead')
+                )
+            }
+        return emails;
+        // TODO: add filter by starred and by lables
+    })
 }
 
 function getById(emailId) {
     return storageService.get(EMAILS_KEY, emailId);
 }
 
-function removeToTrash(email) {
+function moveToTrash(email) {
     email.status = 'trash';
     return storageService.put(EMAILS_KEY, email);
 }
 
-function save(key, entity) {
-    if(key === 'emails') storageService.put(EMAILS_KEY, entity);
-    if(key === 'filter') storageService.put(FILTER_KEY, entity);
+function deleteEmail(emailId) {
+    return storageService.remove(EMAILS_KEY ,emailId);
 }
 
 function _createEmails() {
@@ -69,19 +87,4 @@ function _createEmails() {
         ]
     }
     utilService.saveToStorage(EMAILS_KEY, emails);
-}
-
-function _createFilter() {
-    var filter = utilService.loadFromStorage(FILTER_KEY);
-    if (!filter) {
-        filter = [{
-            id: 'filter',
-            status: 'inbox',
-            txt: '',
-            isRead: 'all',
-            isStarred: 'all',
-            labels: []
-        }]
-    }
-    utilService.saveToStorage(FILTER_KEY, filter);
 }

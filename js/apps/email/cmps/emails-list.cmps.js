@@ -10,6 +10,5 @@ export default {
             <email-preview v-for="email in emails" :email="email" :key="email.id" />
         </ul>
         
-    `,
-    
+    `,    
 }

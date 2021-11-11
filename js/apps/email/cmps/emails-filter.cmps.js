@@ -3,33 +3,26 @@ import { eventBus } from '../../../services/event-bus-service.js'
 export default {
     template: `
     <section class="emails-filter flex space-between">
-        <input type="text" class="search" v-model="filterBy.txt" @input="filter" placeholder="Search">
+        <input type="text" class="search" v-model="txt" @input="filter('txt', txt)" placeholder="Search">
         <div class="flex space-between">
             <h3>Show:</h3>
-            <button @click="changeFilter('isRead', 'read')">read</button>
-            <button @click="changeFilter('isRead', 'unRead')">unread</button>
-            <button @click="changeFilter('isRead', 'all')">all</button>
+            <button @click="filter('isRead', 'read')">read</button>
+            <button @click="filter('isRead', 'unRead')">unread</button>
+            <button @click="filter('isRead', 'all')">all</button>
         </div>
     </section>
     `,
     data() {
         return {
-            filterBy: {
-                txt: '',
-                isRead: 'all',
-                isStarred: 'all',
-                labels: []
-            }
+            txt: '',
+            isRead: 'all',
+            isStarred: 'all',
+            labels: []
         }
     },
     methods: {
-        filter() {
-            eventBus.$emit('filtered', JSON.parse(JSON.stringify(this.filterBy)));
-        },
-        changeFilter(key, value) {
-            this.filterBy[key] = value;
-            eventBus.$emit('filtered', JSON.parse(JSON.stringify(this.filterBy)));
+        filter(key, value) {
+            eventBus.$emit('filter', key, value);
         }
-
     }
 }

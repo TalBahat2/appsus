@@ -1,4 +1,5 @@
 import { emailService } from "../services/email-service.js";
+import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     template: `
@@ -7,7 +8,8 @@ export default {
             <p class="body">{{email.body}}</p>
             <p class="sender">{{email.from}}</p>
             <p class="status">{{email.status}}</p>
-            <button @click="removeToTrash">Delete</button>
+            <button v-if="email.status !== 'trash'" @click="moveToTrash">Delete</button>
+            <router-link v-else :to="'/email'" @click.native="remove">Delete permanently</router-link>
             <router-link :to="'/email'">back to emails</router-link>
         </section>
     `,
@@ -22,15 +24,13 @@ export default {
             .then(email => this.email = email);
     },
     methods: {
-        removeToTrash() {
-            if (this.email.status !== 'trash') {
-                emailService.removeToTrash(this.email)
-                    .then(updatedEmail => this.email = updatedEmail)
-                // TODO: pop a userMsg that email has been removed to trash
-            } else {
-                // delete forever
-                // move to inbox
-            }
+        moveToTrash() {
+            emailService.moveToTrash(this.email)
+                .then(updatedEmail => this.email = updatedEmail)
+            // TODO: pop a userMsg that email has been removed to trash
+        },
+        remove() {
+            eventBus.$emit('deleteEmail', this.email.id)
         }
     }
 }
