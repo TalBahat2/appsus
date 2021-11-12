@@ -102,7 +102,6 @@ function remove(noteId) {
     return storageService.remove(NOTES_KEY, noteId);
 }
 
-function changeColor(note, color){
-    note.color = color;
-    console.log(note);
+function changeColor(note){
+    return storageService.put(NOTES_KEY,note)
 }

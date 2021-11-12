@@ -13,7 +13,7 @@ export default{
         noteTodos
     },
     template:`
-        <div class="note-preview">
+        <section class="note-preview"  :style="{backgroundColor: note.color}">
             <component :is="comp" :note="note" />
             <div v-if="editTxt">
                 <textarea rows="4" v-model="note.info.txt"/>
@@ -44,7 +44,7 @@ export default{
                     </div>
                 </i>
             </div>
-        </div>
+        </section>
     `,
     data(){
         return{
@@ -66,13 +66,12 @@ export default{
             if(note.type === 'noteTxt'){
                 this.editTxt = true
             }else if(note.type === 'noteImg' ||note.type === 'noteVid'){
-                this.editImg = true
+                this.editImg = true;
+                this.newImgUrl = '';
             }
         },
         saveEdit(){
-            console.log(this.note);
             if(this.note.type === 'noteImg' ||this.note.type === 'noteVid'){
-                console.log('inside if');
                 this.note.info.url = this.newImgUrl
             }
             eventBus.$emit('saveEdit', this.note)
