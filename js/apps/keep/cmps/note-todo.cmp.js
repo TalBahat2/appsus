@@ -3,14 +3,27 @@ export default {
     props: ['note'],
     components: {
     },
-    template:`
+    template: `
         <section class="note-todo">
-            <h3>label: {{note.info.label}}</h3>
+            <p>{{note.info.label}}:</p>
             <hr>
-            <ul v-for="todo in note.info.todos">
-                <li>{{todo.txt}}</li>
-                <hr>
+            <ul class="clean-list">
+                <li v-for="(todo, idx) in note.info.todos">{{todo.txt}}
+                    <input v-model="todo.isDone" @click="markLine" type="checkbox">
+                    <button>del</button>
+                    <hr>
+                </li>
             </ul>
         </section>
     `,
+    data() {
+        return {
+            isMarked: false,
+        }
+    },
+    methods: {
+        markLine() {
+            console.log(this.todo);
+        }
+    }
 }

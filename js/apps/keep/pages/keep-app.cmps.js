@@ -24,6 +24,7 @@ export default {
         eventBus.$on('remove',this.removeNote)
         eventBus.$on('cancelEdit', this.cancelEdit)
         eventBus.$on('saveEdit', this.saveEdit)
+        eventBus.$on('changeColor', this.changeColor)
     },
     destroyed(){
         eventBus.$off('remove',this.removeNote)
@@ -35,7 +36,6 @@ export default {
                     this.notes = notes});
         },
         addNote(note){
-            console.log(note);
             noteService.createNote(note)
                 .then(()=> this.loadNotes())
         },
@@ -48,6 +48,10 @@ export default {
         },
         saveEdit(note){
             noteService.saveEditedNote(note)
+        },
+        changeColor(note,color){
+            note.color = color;
+            changeColor(note);
         }
     }
 }

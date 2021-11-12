@@ -28,8 +28,10 @@ export default {
         changeNoteType(type){
             if(type === 'noteTxt'){
                 this.placeHolder = 'whats on your mind?'
+                this.noteType = 'noteImg'
             }else if(type === 'noteImg' || type === 'noteVid'){ 
                 this.placeHolder = 'Type a URL address'
+                this.noteType = 'noteImg'
             }
         }
     },
