@@ -23,11 +23,6 @@ a{
     text-decoration: none;
 }
 
-.main-layout {
-    max-width: 800px;
-    margin: auto;
-}
-
 .app-header {
     height: 10vh;
     background-color: rgb(87, 183, 221);
@@ -38,6 +33,11 @@ a{
     height: 100%;
     padding: 0 20px;
     
+}
+
+.logo {
+    font-family: genos-bold, sans-serif;
+    font-size: 3rem;
 }
 
 .nav-bar{

@@ -7,3 +7,9 @@
     font-family: roboto-medium;
     src: url('../../fonts/roboto/Roboto-Medium.ttf');
 }
+
+@font-face {
+    font-family: genos-bold;
+    src: url('../../fonts/static/Genos-Bold.ttf');
+}
+

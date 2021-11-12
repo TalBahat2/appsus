@@ -4,7 +4,7 @@ export default {
     template: `
         <section class="app-header">
             <div class="header-elements flex space-between align-center main-layout">
-                <div class="logo">logo</div>
+                <router-link to="/" class="logo">Appsus</router-link>
                 <i class="fas fa-bars" @click="toggleNav"></i>
             </div>
             <nav class="nav-bar flex direction-column align-center" v-if="isNavOpen">
