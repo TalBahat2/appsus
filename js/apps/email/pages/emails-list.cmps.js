@@ -1,4 +1,5 @@
 import emailPreview from '../cmps/email-preview.cmps.js'
+import { emailService } from "../services/email-service.js";
 
 export default {
     props: ['emails'],
@@ -10,5 +11,11 @@ export default {
             <email-preview v-for="email in emails" :email="email" :key="email.id" />
         </ul>
         
-    `,    
+    `,
+    data() {
+        return {
+        }
+    },
+    created() {
+    }
 }

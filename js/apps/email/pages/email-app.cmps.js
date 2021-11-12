@@ -1,24 +1,24 @@
 import { emailService } from '../services/email-service.js'
-import emailsList from '../cmps/emails-list.cmps.js'
+import emailsList from '../pages/emails-list.cmps.js'
 import emailsFilter from '../cmps/emails-filter.cmps.js'
 import emailsFolderList from '../cmps/emails-folder-list.cmps.js'
 import { eventBus } from '../../../services/event-bus-service.js'
-// import emailCompose from '../cmps/email-compose.cmps.js'
+import emailCompose from '../pages/email-compose.cmps.js'
 
 export default {
     components: {
         emailsList,
         emailsFilter,
         emailsFolderList,
-        // emailCompose
+        emailCompose
     },
     template: `
         <section class="email-app">
             <emails-filter />
+            <router-link to="/email/compose">Compose</router-link>
+            <email-compose />
             <section class="flex">
                 <emails-folder-list />
-                <!-- <email-compose /> -->
-                <!-- {{emails}} -->
                 <emails-list v-if="emails && emails.length" :emails="emails" />
                 <div v-else>no emails to show</div>
             </section>
@@ -51,7 +51,5 @@ export default {
         deleteEmail(emailId) {
             emailService.deleteEmail(emailId);
         }
-    },
-    computed: {
     },
 }

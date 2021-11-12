@@ -3,6 +3,8 @@ import aboutPage from './pages/app-about.cmps.js'
 import emailApp from './apps/email/pages/email-app.cmps.js'
 import keepApp from './apps/keep/pages/keep-app.cmps.js'
 import emailDetails from './apps/email/pages/email-details.cmps.js'
+import emailCompose from './apps/email/pages/email-compose.cmps.js'
+// import emailsList from './apps/email/pages/emails-list.cmps.js'
 
 const routes = [
     {
@@ -15,7 +17,11 @@ const routes = [
     },
     {
         path: '/email',
-        component: emailApp
+        component: emailApp,
+    },
+    {
+        path: '/email/compose',
+        component: emailCompose
     },
     {
         path: '/email/:emailId',
