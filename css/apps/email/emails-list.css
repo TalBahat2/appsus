@@ -2,10 +2,12 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    flex: 1;
 }
 
 .email-preview {
     padding: 10px;
+    flex: 1;
 }
 
 .emails-folder-list {

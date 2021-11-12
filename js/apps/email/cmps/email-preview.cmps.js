@@ -1,18 +1,21 @@
 export default {
     props: ['email'],
     template: `
-        <li class="email-preview flex space-between" @click="readMore(email)">
-            <div class="from" :style="styleObject">{{senderName}}</div>
-            <div class="title" :style="styleObject">{{email.subject}}</div>
-            <div class="body">{{email.body}}</div>
-            <div class="sent-at" :style="styleObject">{{formattedDate}}</div>
+        <li class="email-preview flex space-between" @click="readMore(email)" :style="styleObject">
+            <div class="grow-1">{{senderName}}</div>
+            <div class="grow-1">{{email.subject}}</div>
+            <div class="grow-1">{{email.body}}</div>
+            <div class="grow-1">{{formattedDate}}</div>
             <router-link :to="emailLink">open</router-link>
+            <div></div>
         </li>
     `,
     data() {
         return {
-            
+            showMore: false
         }
+    },
+    methods: {
     },
     computed: {
         formattedDate() {
@@ -30,13 +33,15 @@ export default {
         },
         styleObject() {
             return {
-                'font-family': (this.email.isRead) ? 'roboto-light, sans-serif' :'roboto-medium, sans-serif'
+                'font-family': (this.email.isRead) ? 'roboto-light, sans-serif' :'roboto-medium, sans-serif',
+                'background-color': (this.email.isRead) ? '#f5f7f7' : '#fff',
             }
         }
     },
     methods: {
         readMore(email) {
             console.log('email',email);
+            this.showMore = true;
             //TODO: open a bigger view (under the email li)
         }
     }

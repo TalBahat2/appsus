@@ -16,7 +16,7 @@ export default {
         <section class="email-app">
             <emails-filter />
             <router-link to="/email/compose">Compose</router-link>
-            <email-compose />
+            <h3 class="flex justify-center">{{filterBy.status}}</h3>
             <section class="flex">
                 <emails-folder-list />
                 <emails-list v-if="emails && emails.length" :emails="emails" />
@@ -40,7 +40,8 @@ export default {
         emailService.query(this.filterBy)
             .then(emails => this.emails = emails);
         eventBus.$on('filter', this.filter);
-        eventBus.$on('deleteEmail', this.deleteEmail);
+        eventBus.$on('deleteEmail', this.deleteEmail); 
+        eventBus.$on('sendEmail', this.sendEmail); 
     },
     methods: {
         filter(key, value) {
@@ -50,6 +51,9 @@ export default {
         },
         deleteEmail(emailId) {
             emailService.deleteEmail(emailId);
+        },
+        sendEmail(email) {
+            emailService.sendEmail(email);
         }
     },
 }

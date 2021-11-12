@@ -8,12 +8,20 @@
     justify-content: space-between;
 }
 
+.flex.justify-center {
+    justify-content: center;
+}
+
 .flex.align-center {
     align-items: center;
 }
 
 .flex.direction-column {
     flex-direction: column;
+}
+
+.flex.grow-1 {
+    flex-grow: 1;
 }
 
 /* list helpers */

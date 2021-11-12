@@ -8,7 +8,8 @@ export const emailService = {
     query,
     getById,
     moveToTrash,
-    deleteEmail
+    deleteEmail,
+    sendEmail
 }
 
 function query(filterBy) {
@@ -48,6 +49,10 @@ function moveToTrash(email) {
 
 function deleteEmail(emailId) {
     return storageService.remove(EMAILS_KEY ,emailId);
+}
+
+function sendEmail(email) {
+    storageService.post(EMAILS_KEY, email);
 }
 
 function _createEmails() {
