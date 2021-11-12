@@ -19,6 +19,10 @@ body, h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 .main-layout {
     max-width: 800px;
     margin: auto;
@@ -27,12 +31,28 @@ body, h1, h2, h3, h4, h5, h6 {
 .app-header {
     height: 10vh;
     background-color: rgb(87, 183, 221);
+    position: relative;
 }
 
 .app-header .header-elements {
     height: 100%;
-    padding: 10px 0;
+    padding: 0 20px;
     
+}
+
+.nav-bar{
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    width: 100px;
+    background-color: blanchedalmond;
+    padding: 10px;
+}
+
+.nav-bar a{
+    height: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .main-page {

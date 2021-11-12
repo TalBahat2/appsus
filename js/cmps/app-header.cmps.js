@@ -5,19 +5,24 @@ export default {
         <section class="app-header">
             <div class="header-elements flex space-between align-center main-layout">
                 <div class="logo">logo</div>
-                <nav>
-                    <router-link to="/">Home</router-link>
-                    <router-link to="/about">About</router-link>
-                    <router-link to="/email">Email</router-link>
-                    <router-link to="/keep">Keep</router-link>
-                    <!-- <button @click="showMsg">show msg</button> -->
-                </nav>
+                <i class="fas fa-bars" @click="toggleNav"></i>
             </div>
+            <nav class="nav-bar flex direction-column align-center" v-if="isNavOpen">
+                <router-link to="/" @click.native="toggleNav">Home</router-link>
+                <router-link to="/about" @click.native="toggleNav">About</router-link>
+                <router-link to="/email" @click.native="toggleNav">Email</router-link>
+                <router-link to="/keep" @click.native="toggleNav">Keep</router-link>
+            </nav>
         </section>
     `,
+    data(){
+        return {
+            isNavOpen: false,
+        }
+    },
     methods: {
-        // showMsg() {
-        //     eventBus.$emit('showMsg', true)
-        // }
+        toggleNav(){
+            this.isNavOpen= !this.isNavOpen;
+        }
     }
 }
