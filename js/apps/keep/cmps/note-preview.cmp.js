@@ -18,20 +18,31 @@ export default{
             <div v-if="editTxt">
                 <textarea rows="4" v-model="note.info.txt"/>
                 <div>
-                    <button @click="saveEdit">Save</button>
-                    <button @click="cancelEdit(note)">Cancel</button>
+                    <i @click="saveEdit" class="fa fa-save" title="Save changes"></i>
+                    <i @click="cancelEdit(note)" class="fas fa-window-close" title="Cancel changes"></i>
                 </div>
             </div>
             <div v-if="editImg">
                 <input v-model="newImgUrl" placeholder="Type in new URL" />
                 <div>
-                    <button @click="saveEdit">Save</button>
-                    <button @click="cancelEdit(note)">Cancel</button>
+                    <i @click="saveEdit" class="fa fa-save" title="Save changes"></i>
+                    <i @click="cancelEdit(note)" class="fas fa-window-close" title="Cancel changes"></i>
+
                 </div>
             </div>
             <div>
-                <button @click="remove(note)">X</button>
-                <button @click="edit(note)">Edit</button>
+                <i @click="remove(note)" class="fa fa-trash" title="Remove item"></i>
+                <i @click="edit(note)" class="fa fa-edit" title="Edit item"></i>
+                <i @mouseover="colorPalette=true" @mouseleave="colorPalette=false" class="fa fa-palette set-color" title="Change backround color">
+                    <div v-if="colorPalette" class="drop-down-colors flex">
+                        <i @click="setColor('#fffdf7')" class="fas fa-tint" style="color: #fffdf7;"></i>
+                        <i @click="setColor('#e5e528')" class="fas fa-tint" style="color: #e5e528;"></i>
+                        <i @click="setColor('#86c1c1')" class="fas fa-tint" style="color: #86c1c1;"></i>
+                        <i @click="setColor('#76cd6e')" class="fas fa-tint" style="color: #76cd6e;"></i>
+                        <i @click="setColor('#cb9741')" class="fas fa-tint" style="color: #cb9741;"></i>
+                        <i @click="setColor('#d54f4f')" class="fas fa-tint" style="color: #d54f4f;"></i>
+                    </div>
+                </i>
             </div>
         </div>
     `,
@@ -41,6 +52,7 @@ export default{
             editTxt: false,
             editImg: false,
             newImgUrl: '',
+            colorPalette: false,
         }
     },
     created() {
@@ -67,11 +79,14 @@ export default{
             this.editTxt = false
             this.editImg = false
         },
-        cancelEdit(note){
+        cancelEdit(){
                 this.editTxt = false
                 this.editImg = false
 
             eventBus.$emit('cancelEdit')
+        },
+        setColor(color){
+            eventBus.$emit('changeColor', this.note, color)
         }
     },
 }

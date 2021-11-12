@@ -1,5 +1,4 @@
-
-.note-preview-container{
+.note-preview-container {
     font-size: 18px;
     padding: 10px;
     background-color: lightgoldenrodyellow;
@@ -8,10 +7,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
 }
 
-.note-list{
+.note-list {
     margin: 0;
     padding: 20px;
     list-style: none;
@@ -22,11 +20,35 @@
     align-items: flex-start;
 }
 
-.note-preview img{
-    height: 100px;
+.note-preview img {
+    object-fit: fill;
+    max-width: 100%;
 }
 
-.note-preview video{
-    height: 100px;
-    max-width: 160px;
+.note-preview video {
+    object-fit: fill;
+    max-width: 100%;
+}
+
+.note-todo li {
+    font-size: 0.8rem;
+}
+
+.set-color {
+    position: relative;
+}
+
+.set-color:hover {
+    color: blue;
+}
+
+.drop-down-colors {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    position: absolute;
+    top: 0.5em;
+    left: -40px;
+    gap: 4px;
+    background-color: rgba(112, 112, 112, 0.376);
 }

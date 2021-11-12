@@ -43,7 +43,8 @@ const demoNotes = [
             label: "do this and do that",
             todos: [
                 {txt: 'finish this code!', isDone: false},
-                {txt: 'Go to the Bar-Mizva', isDone: true}
+                {txt: 'Go to the Bar-Mizva', isDone: true},
+                {txt: 'Leave the Bar-Mizva', isDone: false}
             ]
         }
     },
@@ -56,6 +57,7 @@ export const noteService = {
     saveEditedNote,
     createNote,
     remove,
+    changeColor
 }
 
 function _createDemoNotes(){ 
@@ -98,4 +100,9 @@ function createNote(note) {
 
 function remove(noteId) {
     return storageService.remove(NOTES_KEY, noteId);
+}
+
+function changeColor(note, color){
+    note.color = color;
+    console.log(note);
 }
