@@ -66,45 +66,74 @@ function _createEmails() {
         emails = [
             {
                 id: 'e101',
-                subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                subject: 'Matan Crispel shared "CaSep21-Materials" with you',
+                body: 'Hi there, Matan Crispel (matan.cris@gmail.com) invited you to view the folder "CaSep21-Materials" on Dropbox.\n Enjoy!\n The Dropbox team',
                 isRead: false,
                 sentAt: 1551133930594,
-                from: 'momo@momo.com',
+                from: 'coding_academy@gmail.com',
                 status: 'inbox',
                 to: 'user@appsus.com'
             },
             {
                 id: 'e102',
-                subject: 'Hi there!',
-                body: 'Lets go to the beach',
+                subject: 'New date for our meeting',
+                body: 'Hi there, I would like to change our meeting date for Wednesday, is it work for you?',
                 isRead: true,
                 sentAt: 1551133930655,
-                from: 'puki@puki.com',
+                from: 'puki@gmail.com',
                 status: 'inbox',
                 to: 'user@appsus.com'
             },
             {
                 id: 'e103',
-                subject: 'number3!',
-                body: 'hello',
+                subject: 'New Account Details',
+                body: 'Ta-da! You’ve joined your first Slack workspace and we couldn’t be more delighted. Here are your account details, along with some tips to help you get started.',
                 isRead: true,
-                sentAt: 1551134930655,
-                from: 'user@appsus.com',
+                sentAt: 1551999930655,
+                from: 'slack@slack.com',
                 status: 'inbox',
-                to: 'puki@puki.com'
+                to: 'user@appsus.com'
             },
-            // {
-            //     id: 'e104',
-            //     subject: 'number3!',
-            //     body: 'hello',
-            //     isRead: true,
-            //     sentAt: 1551134930655,
-            //     from: 'user@appsus.com',
-            //     status: 'inbox',
-            //     to: 'puki@puki.com'
-            // },
-
+            {
+                id: 'e104',
+                subject: 'Important update from YouTube API Services: Making the dislike count private',
+                body: 'Dear YouTube API developer,\nWe would like to inform you of upcoming changes to YouTube that will impact the data available via the Data API starting December 13, 2021.\nOn November 10, YouTube will be making the public dislike count private. Users will still be able to dislike videos, and creators will still have access to the dislike counts for their own videos in YouTube Studio. Learn more about this change in our blog post.\nTo make the dislike count private across the platform, we also will be removing public access to the dislike count data via our API.',
+                isRead: true,
+                sentAt: 1551131010655,
+                from: 'google_cloud@google.com',
+                status: 'inbox',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e105',
+                subject: 'Updates from our project',
+                body: 'Hi Roy, I have just Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, aliquid? Est veritatis eveniet, odit maiores sunt officiis consequuntur rem quo. Facere odio laudantium optio repellendus. Expedita maxime molestiae ullam? Nostrum.',
+                isRead: true,
+                sentAt: 1551131010655,
+                from: 'user@appsus.com',
+                status: 'sent',
+                to: 'roygil@gmail.com'
+            },
+            {
+                id: 'e106',
+                subject: 'פתיחת הרשמה לסמסטר אביב תשפ"ב',
+                body: 'שלום רב, היום נפתחה ההרשמה לסמסטר אביב תשפ"ב. המידע המלא מופיע באתר ההרשמה',
+                isRead: true,
+                sentAt: 1551771010655,
+                from: 'open_university@google.com',
+                status: 'inbox',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e107',
+                subject: 'About the last payment',
+                body: 'Hi Valery, please contact me about toe final payment. \n yours, \n Tal',
+                isRead: true,
+                sentAt: 1551771010655,
+                from: 'user@appsus.com',
+                status: 'sent',
+                to: 'valery@gmail.com'
+            },
         ]
     }
     utilService.saveToStorage(EMAILS_KEY, emails);

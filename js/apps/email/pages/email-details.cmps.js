@@ -9,6 +9,7 @@ export default {
                 <p class="labels">{{email.status}}</p>
             </div>
             <p class="sender">from: {{email.from}}</p>
+            <p class="receiver">to: {{email.to}}</p>
             <hr>
             <p class="body">{{email.body}}</p>
             <hr>
@@ -37,7 +38,7 @@ export default {
         moveToTrash() {
             this.email.status = 'trash';
             emailService.update(this.email);
-            if (this.email.status === 'trash') eventBus.$emit('showMsg', 'Email moved to trash!')            
+            eventBus.$emit('showMsg', 'Email moved to trash!')            
         },
         remove() {
             eventBus.$emit('deleteEmail', this.email.id)

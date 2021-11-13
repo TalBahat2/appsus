@@ -79,3 +79,27 @@ a{
     padding: 10px;
     background-color: rgb(87, 183, 221);
 }
+
+.app-home img {
+    width: 100%;
+    min-width: 1200px;
+}
+
+.app-home h1 {
+    font-family: genos-regular, sans-serif;
+    text-align: center;
+    font-size: 5em;
+}
+
+.app-about h1 {
+    font-family: genos-regular, sans-serif;
+    text-align: center;
+    font-size: 5em;
+}
+
+.app-about p {
+    font-family: genos-regular, sans-serif;
+    text-align: center;
+    font-size: 2em;
+    margin: auto 20px;
+}

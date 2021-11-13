@@ -1,4 +1,4 @@
-export default{
+export default {
     props: ['txt', 'size'],
     template:`
         <section class="text-length">

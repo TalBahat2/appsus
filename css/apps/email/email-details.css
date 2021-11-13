@@ -6,6 +6,11 @@
     font-size: 0.7em;
 }
 
+.email-details .receiver {
+    font-size: 0.7em;
+    padding-top: 3px;
+}
+
 .email-details .subject {
     font-size: 1.7em;
     padding: 10px 0;

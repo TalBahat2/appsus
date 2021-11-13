@@ -1,16 +1,24 @@
+import textLength from './text-length.cmps.js';
+
 export default {
     props: ['email'],
+    components: {
+        textLength
+    },
     template: `
         <tr class="email-preview" @click="readMore(email)" :style="styleObject">
             <td class="sender">{{senderName}}</td>
-            <td class="subject">{{email.subject}}</td>
-            <td class="body" :style="{'font-family': 'roboto-light, sans-serif'}">{{email.body}}</td>
+            <td class="subject">
+                <text-length :txt="email.subject" :size="10" />
+            </td>
+            <td class="body" :style="{'font-family': 'roboto-light, sans-serif'}">
+                <text-length :txt="email.body" :size="40" />
+            </td>
             <td class="date">{{formattedDate}}</td>
         </tr>
     `,
     data() {
         return {
-            showMore: false
         }
     },
     methods: {
@@ -38,10 +46,8 @@ export default {
     },
     methods: {
         readMore(email) {
-            console.log('email',email);
-            this.showMore = true;
-            this.$router.push('/email/' + this.email.id)
-            //TODO: open a bigger view (under the email li)
+            if(email.status !== 'draft') this.$router.push('/email/' + this.email.id)
+            else this.$router.push('/email/compose/' + this.email.id)
         }
     }
 

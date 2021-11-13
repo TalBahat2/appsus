@@ -13,3 +13,7 @@
     src: url('../../fonts/static/Genos-Bold.ttf');
 }
 
+@font-face {
+    font-family: genos-regular;
+    src: url('../../fonts/static/Genos-Regular.ttf');
+}

@@ -1,4 +1,5 @@
 import { eventBus } from '../../../services/event-bus-service.js'
+import {emailService} from '../services/email-service.js'
 
 export default {
     template: `
@@ -19,7 +20,7 @@ export default {
                     <router-link class="send" to="/email" @click.native="send">                    
                         <i class="far fa-paper-plane" title="send"></i>
                     </router-link>
-                    <router-link class="save" to="/email" @click.native="saveToDraft">                    
+                    <router-link class="save" to="/email" @click.native="saveDraft">                    
                         <i class="fas fa-save" title="save to draft"></i>
                     </router-link>
                 </div>
@@ -42,8 +43,11 @@ export default {
         }
     },
     created() {
+        const { emailId } = this.$route.params;
+        if(emailId) emailService.getById(emailId)
+            .then(email => this.email = email);
         this.email.sentAt = Date.now();
-        this.saveToDraft(this.email);
+        this.addDraft(this.email);
         this.saveDraftInterval = setInterval(()=> {
             this.updateDraft(this.email);
         }, 5000)
@@ -56,16 +60,21 @@ export default {
     methods: {
         send() {
             this.email.status = 'sent';
+            this.email.isRead = true;
             this.email.sentAt = Date.now();
             eventBus.$emit('update', this.email)
+            eventBus.$emit('showMsg', 'email has been sent!');
             clearInterval(this.saveDraftInterval);
         },
-        saveToDraft() {
+        addDraft() {
             eventBus.$emit('saveEmail', this.email);
         },
         updateDraft() {
             eventBus.$emit('update', this.email);
-            console.log('here');
+        },
+        saveDraft() {
+            eventBus.$emit('update', this.email);
+            eventBus.$emit('showMsg', 'email saved to drafts!');
         }
     }
 
