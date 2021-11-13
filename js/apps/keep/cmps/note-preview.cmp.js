@@ -43,6 +43,10 @@ export default{
                         <i @click="setColor('#d54f4f')" class="fas fa-tint" style="color: #d54f4f;"></i>
                     </div>
                 </i>
+                <i v-if="note.isPinned" @click="togglePin" title="Unpin note" class="fa fa-thumbtack"></i>
+                <i v-if="!note.isPinned" @click="togglePin" title="pin note" class="fa fa-thumbtack fa-rotate-90"></i>
+                <i @click="duplicate" title="Duplicate note" class="fas fa-clone"></i>
+
             </div>
         </section>
     `,
@@ -86,6 +90,12 @@ export default{
         },
         setColor(color){
             eventBus.$emit('changeColor', this.note, color)
+        },
+        togglePin(){
+            eventBus.$emit('togglePin', this.note)
+        },
+        duplicate(){
+            eventBus.$emit('duplicate', this.note)
         }
     },
 }

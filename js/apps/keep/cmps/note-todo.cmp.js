@@ -8,11 +8,16 @@ export default {
             <p>{{note.info.label}}:</p>
             <hr>
             <ul class="clean-list">
-                <li v-for="(todo, idx) in note.info.todos">{{todo.txt}}
-                    <input v-model="todo.isDone" @click="markLine" type="checkbox">
-                    <button>del</button>
+                <div v-for="todo in note.info.todos">
+                    <div class="flex space-between">
+                        <li>{{todo.txt}}</li>
+                        <div>
+                            <input v-model="todo.isDone" @click="markLine" type="checkbox">
+                            <i @click="remove" class="fa fa-trash" title="Remove list item"></i>
+                        </div>
+                    </div>
                     <hr>
-                </li>
+                </div>
             </ul>
         </section>
     `,
@@ -23,6 +28,9 @@ export default {
     },
     methods: {
         markLine() {
+            console.log(this.todo);
+        },
+        remove(){
             console.log(this.todo);
         }
     }
