@@ -16,10 +16,9 @@ export default {
         <section class="email-app">
             <emails-filter />
             <router-link class="composeBtn" to="/email/compose">Compose</router-link>
-            <section class="flex">
+            <section class="flex folders-and-emails">
                 <emails-folder-list />
-                <emails-list v-if="emails && emails.length" :emails="emails" :status="filterBy.status" />
-                <div v-else>no emails to show</div>
+                <emails-list :emails="emails" :status="filterBy.status" />
             </section>
         </section>
     `,

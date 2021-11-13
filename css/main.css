@@ -4,7 +4,7 @@
 @import "apps/keep/keep-list.css";
 @import "parts/fonts.css";
 @import "apps/email/email-details.css";
-
+@import "apps/email/email-compose.css";
 
 
 * {
@@ -57,7 +57,7 @@ a{
 }
 
 .main-page {
-    background-color: #daffff;
+    background-color: #fff;
     min-height: 85vh;
 }
 

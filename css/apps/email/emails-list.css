@@ -3,10 +3,28 @@
     margin: 0;
     padding: 0 5px;
     flex: 1;
+    border-collapse: collapse;
+    height: 100%;
 }
 
-.emails-list .status {
-    padding-bottom: 10px;
+.emails-list > :first-child {
+    background-color: rgb(206, 206, 206);
+    height: 30px;
+}
+
+.emails-list > :first-child td {
+    padding: 10px;
+    font-size: 1.3rem;
+    font-family: roboto-medium, sans-serif;
+}
+
+.emails-list > :not(:first-child) {
+    border: 1px solid rgb(88, 87, 87);
+    height: 50px;
+}
+
+.emails-list > :not(:first-child):hover {
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
 }
 
 .email-preview {
@@ -15,40 +33,97 @@
     border: 1px solid grey;
 }
 
-.emails-folder-list {
-    padding-top: 10px;
-    margin-top: 10px;
+.email-preview .sender {
+    width: 10%;
+    padding-inline-start: 5px;
 }
 
-.emails-folder-list:hover {
+.email-preview .subject {
+    width: 15%;
+}
+
+.email-preview .body {
+    width: 65%;
+}
+
+.email-preview .date {
+    width: 10%;
+}
+
+.folders-and-emails {
+    padding-top: 40px;
+}
+
+/* emails folder list */
+
+.emails-folder-list {
+    border-top: 1px solid grey;
+    border-inline-end: 1px solid grey;
+}
+
+.emails-folder-list > :not(:first-child):hover {
     cursor: pointer;
 }
 
 .emails-folder-list > * {
-    width: 100px;
+    width: 200px;
+}
+
+.emails-folder-list > :first-child{
+    text-align: center;
+    height: 45px;
+    padding-top: 10px;
 }
 
 .emails-folder-list > :not(:first-child){
     padding: 10px;
-    margin: 10px;
+    /* margin: 10px; */
     background-color: rgb(247, 247, 253);
     border: 1px solid grey;
 }
 
 .emails-filter {
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 20px;
+    margin-bottom: 0;
 }
 
+.emails-filter .search {
+    height: 100%;
+    font-family: roboto-light, sans-serif;
+    font-size: 1.15rem;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.emails-filter .isRead-filters {
+    padding-inline-start: 100px;
+}
+
+.emails-filter .isRead-filters > * {
+    width: 80px;
+    font-family: roboto-light, sans-serif;
+    font-size: 1.15rem;
+    background-color: #fff;
+    border: 1px solid grey;
+}
+
+.emails-filter .isRead-filters > *:hover {
+    cursor: pointer;
+}
 .composeBtn {
-    width: 100px;
+    width: 500px;
     padding: 10px;
     box-shadow: 3px 2px 10px 2px rgba(0,0,0,0.71);
     border: 1px solid black;
     border-radius: 50px;
-    margin: 10px;
+    margin: 0 20px;
 }
 
 .composeBtn:hover {
-    background-color: #fff;
+    background-color: rgb(209, 209, 209);
+}
+
+.no-emails {
+    padding-inline-start: 10px;
+    font-size: 1.4em;
 }

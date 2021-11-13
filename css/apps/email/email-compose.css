@@ -1,0 +1,36 @@
+.email-compose .header {
+    padding: 10px;
+    background-color: #d8dada;
+}
+
+.email-compose {
+    padding: 5px;
+}
+
+.email-compose .to {
+    padding: 10px;
+    width: 100%;
+    font-size: 1.15em;
+    font-family: roboto-light, sans-serif;
+}
+
+.email-compose .subject {
+    padding: 10px;
+    width: 100%;
+    font-size: 1.15em;
+    font-family: roboto-light, sans-serif;
+}
+
+.email-compose .body {
+    font-size: 1.15em;
+    font-family: roboto-light, sans-serif;
+}
+
+.email-compose .send {
+    width: 50px;
+    height: 50px;
+}
+
+.email-compose i {
+    font-size: 2em;
+}

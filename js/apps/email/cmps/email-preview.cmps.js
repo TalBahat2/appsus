@@ -1,14 +1,12 @@
 export default {
     props: ['email'],
     template: `
-        <li class="email-preview flex space-between" @click="readMore(email)" :style="styleObject">
-            <div class="grow-1">{{senderName}}</div>
-            <div class="grow-1">{{email.subject}}</div>
-            <div class="grow-1">{{email.body}}</div>
-            <div class="grow-1">{{formattedDate}}</div>
-            <router-link :to="emailLink">open</router-link>
-            <div></div>
-        </li>
+        <tr class="email-preview" @click="readMore(email)" :style="styleObject">
+            <td class="sender">{{senderName}}</td>
+            <td class="subject">{{email.subject}}</td>
+            <td class="body" :style="{'font-family': 'roboto-light, sans-serif'}">{{email.body}}</td>
+            <td class="date">{{formattedDate}}</td>
+        </tr>
     `,
     data() {
         return {
@@ -42,6 +40,7 @@ export default {
         readMore(email) {
             console.log('email',email);
             this.showMore = true;
+            this.$router.push('/email/' + this.email.id)
             //TODO: open a bigger view (under the email li)
         }
     }

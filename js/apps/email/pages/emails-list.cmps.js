@@ -7,10 +7,12 @@ export default {
         emailPreview
     },
     template: `
-        <ul class="emails-list">
-            <h3 class="status flex justify-center">{{status}}</h3>
-            <email-preview v-for="email in emails" :email="email" :key="email.id" />
-        </ul>
+        <table class="emails-list grow-1">
+            <tr>
+                <td class="status" colspan="4">{{status}}</td>
+            </tr>
+            <email-preview v-if="emails && emails.length" v-for="email in emails" :email="email" :key="email.id" />
+        </table>
         
     `,
     data() {

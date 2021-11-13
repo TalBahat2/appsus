@@ -88,7 +88,18 @@ function _createEmails() {
                 from: 'user@appsus.com',
                 status: 'inbox',
                 to: 'puki@puki.com'
-            }
+            },
+            // {
+            //     id: 'e104',
+            //     subject: 'number3!',
+            //     body: 'hello',
+            //     isRead: true,
+            //     sentAt: 1551134930655,
+            //     from: 'user@appsus.com',
+            //     status: 'inbox',
+            //     to: 'puki@puki.com'
+            // },
+
         ]
     }
     utilService.saveToStorage(EMAILS_KEY, emails);

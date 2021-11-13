@@ -11,7 +11,9 @@ export default {
             <p class="sender">from: {{email.from}}</p>
             <hr>
             <p class="body">{{email.body}}</p>
-            <button v-if="email.status !== 'trash'" @click="moveToTrash">Delete</button>
+            <div v-if="email.status !== 'trash'" @click="moveToTrash">
+                <i class="fas fa-trash"></i>
+            </div>
             <router-link v-else :to="'/email'" @click.native="remove">Delete permanently</router-link>
             <router-link :to="'/email'">
                 <i class="fas fa-arrow-circle-left" title="back to emails"></i>
