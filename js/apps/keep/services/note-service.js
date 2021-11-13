@@ -77,7 +77,7 @@ function saveNewNote(note) {
 }
 
 function saveEditedNote(note) {
-    storageService.put(NOTES_KEY, note)
+    return storageService.put(NOTES_KEY, note)
 }
 
 function createNote(note) {

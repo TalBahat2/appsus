@@ -38,6 +38,10 @@
     font-size: 0.8rem;
 }
 
+.strike-out{
+    text-decoration: line-through;
+}
+
 .set-color {
     position: relative;
 }
