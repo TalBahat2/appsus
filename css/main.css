@@ -3,7 +3,7 @@
 @import "apps/email/emails-list.css";
 @import "apps/keep/keep-list.css";
 @import "parts/fonts.css";
-
+@import "apps/email/email-details.css";
 
 
 
@@ -12,15 +12,16 @@
 }
 
 html {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: roboto-light, sans-serif;
 }
 
-body, h1, h2, h3, h4, h5, h6 {
+body, h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
 a{
     text-decoration: none;
+    color: black
 }
 
 .app-header {

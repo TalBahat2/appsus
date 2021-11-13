@@ -15,11 +15,10 @@ export default {
     template: `
         <section class="email-app">
             <emails-filter />
-            <router-link to="/email/compose">Compose</router-link>
-            <h3 class="flex justify-center">{{filterBy.status}}</h3>
+            <router-link class="composeBtn" to="/email/compose">Compose</router-link>
             <section class="flex">
                 <emails-folder-list />
-                <emails-list v-if="emails && emails.length" :emails="emails" />
+                <emails-list v-if="emails && emails.length" :emails="emails" :status="filterBy.status" />
                 <div v-else>no emails to show</div>
             </section>
         </section>

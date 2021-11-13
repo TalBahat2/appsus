@@ -1,0 +1,23 @@
+.email-details {
+    padding: 30px;
+}
+
+.email-details .sender {
+    font-size: 0.7em;
+}
+
+.email-details .subject {
+    font-size: 1.7em;
+    padding: 10px 0;
+    padding-inline-end: 20px;
+    /* padding-bottom: 10px; */
+}
+
+.email-details .labels {
+    align-self: center;
+}
+
+.email-details .body {
+    padding: 20px 0;
+    font-size: 1.1em;
+}

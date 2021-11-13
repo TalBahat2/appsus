@@ -1,18 +1,23 @@
 .emails-list {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 5px;
     flex: 1;
+}
+
+.emails-list .status {
+    padding-bottom: 10px;
 }
 
 .email-preview {
     padding: 10px;
     flex: 1;
+    border: 1px solid grey;
 }
 
 .emails-folder-list {
-    padding-inline-end: 20px;
     padding-top: 10px;
+    margin-top: 10px;
 }
 
 .emails-folder-list:hover {
@@ -32,4 +37,18 @@
 
 .emails-filter {
     padding: 10px;
+    margin-bottom: 10px;
+}
+
+.composeBtn {
+    width: 100px;
+    padding: 10px;
+    box-shadow: 3px 2px 10px 2px rgba(0,0,0,0.71);
+    border: 1px solid black;
+    border-radius: 50px;
+    margin: 10px;
+}
+
+.composeBtn:hover {
+    background-color: #fff;
 }
