@@ -521,7 +521,7 @@ function save(book) {
 }
 
 function getNextBookId(bookId) {
-  console.log('bookId in next',bookId)
+  console.log('bookId in next', bookId)
   return query()
     .then(books => {
       const idx = books.findIndex(book => book.id === bookId);
@@ -530,7 +530,7 @@ function getNextBookId(bookId) {
 }
 
 function getPrevBookId(bookId) {
-  console.log('bookId in prev',bookId)
+  console.log('bookId in prev', bookId)
   return query()
     .then(books => {
       const idx = books.findIndex(book => book.id === bookId);

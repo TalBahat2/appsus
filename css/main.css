@@ -36,6 +36,12 @@ a{
     
 }
 
+.app-header .fa-bars{
+    cursor: pointer;
+    font-size: 1.5rem;
+
+}
+
 .logo {
     font-family: genos-bold, sans-serif;
     font-size: 3rem;
@@ -44,20 +50,27 @@ a{
 .nav-bar{
     position: absolute;
     right: 20px;
-    top: 100px;
-    width: 100px;
-    background-color: blanchedalmond;
-    padding: 10px;
+    top: 80px;
+    background-color: rgb(51, 51, 51);
+    /* border-radius: 10px; */
+    /* padding: 10px; */
 }
 
 .nav-bar a{
+    color: rgb(212, 212, 212);
+    width: 150px;
     height: 30px;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
+.nav-bar a:hover{
+    background-color: rgb(116, 116, 116);
+}
+
 .main-page {
-    background-color: #fff;
+    background-color: rgb(240, 240, 240);
     min-height: 85vh;
 }
 

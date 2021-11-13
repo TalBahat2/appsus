@@ -16,14 +16,14 @@ export default {
             </nav>
         </section>
     `,
-    data(){
+    data() {
         return {
             isNavOpen: false,
         }
     },
     methods: {
-        toggleNav(){
-            this.isNavOpen= !this.isNavOpen;
+        toggleNav() {
+            this.isNavOpen = !this.isNavOpen;
         }
     }
 }

@@ -14,6 +14,7 @@ export default {
                         <li :class="{'strike-out' : todo.isDone}">{{todo.txt}}</li>
                         <div>
                             <input v-model="todo.isDone" @click="markLine" type="checkbox">
+                            <i @click="edit(idx)" class="fa fa-edit" title="Edit item"></i>
                             <i @click="remove(idx)" class="fa fa-trash" title="Remove list item"></i>
                         </div>
                     </div>
@@ -31,6 +32,9 @@ export default {
     methods: {
         markLine() {
             eventBus.$emit('saveEdit', this.newNote)
+        },
+        edit(idx){
+
         },
         remove(idx) {
             this.newNote.info.todos.splice(idx, 1)

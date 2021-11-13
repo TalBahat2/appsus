@@ -1,5 +1,5 @@
 import { noteService } from "../services/note-service.js";
-import { eventBus } from "../../../services/event-bus-service.js"
+import { eventBus } from "../../../services/event-bus-service.js";
 import noteAdd from "../cmps/note-add.cmp.js";
 import noteList from "../cmps/note-list.cmp.js";
 import noteFilter from "../cmps/note-filter.cmp.js";
@@ -12,8 +12,10 @@ export default {
     },
     template: `
         <section class="keep-app">
-            <note-filter @filtered="setFilter" />
-            <note-add @addNote="addNote" />
+            <div class="filter-add flex">
+                <note-filter @filtered="setFilter" />
+                <note-add @addNote="addNote" />
+            </div>
             <note-list :notes="notesToShow" />
         </section>
     `,

@@ -40,11 +40,8 @@ export default {
     },
     computed: {
         booksToShow() {
-            console.log('this.filterBy', this.filterBy);
             if (!this.filterBy) {
-                console.log('nothing to filter');
                 return this.books;}
-            console.log('this.filterBy.title', this.filterBy.title);
             const searchStr = this.filterBy.title.toLowerCase();
             const lowPriceStr = this.filterBy.priceLow;
             const highPriceStr = this.filterBy.priceHigh;
