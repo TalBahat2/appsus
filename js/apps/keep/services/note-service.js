@@ -3,12 +3,6 @@ import { storageService } from '../../../services/async-storage-service.js'
 
 const NOTES_KEY = 'notes'
 const demoNotes = [
-//     '#fffdf7'
-//       '#e5e528'
-// '#86c1c1'
-// '#76cd6e'
-// '#cb9741'
-// '#d54f4f'
     {
         id: "n101",
         type: "noteTxt",

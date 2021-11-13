@@ -62,12 +62,6 @@
     margin: 0;
     list-style: none;
     columns: 4;
-    /* padding: 15px; */
-    /* display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    align-items: flex-start; */
 }
 
 .note-preview img {
