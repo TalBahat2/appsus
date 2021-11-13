@@ -11,6 +11,10 @@
     padding-inline-start: 10px;
 }
 
+.email-preview > td:hover {
+    cursor: pointer;
+}
+
 .emails-list > :first-child {
     background-color: rgb(206, 206, 206);
     height: 30px;
@@ -64,6 +68,7 @@
 .emails-folder-list {
     border-top: 1px solid grey;
     border-inline-end: 1px solid grey;
+    flex-direction: column;
 }
 
 .emails-folder-list > :not(:first-child):hover {
@@ -110,6 +115,8 @@
     font-size: 1.15rem;
     background-color: #fff;
     border: 1px solid grey;
+    border-radius: 10px;
+    margin: 3px;
 }
 
 .emails-filter .isRead-filters > *:hover {
@@ -130,4 +137,71 @@
 .no-emails {
     padding-inline-start: 10px;
     font-size: 1.4em;
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .mobile {
+        display: initial;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .email-preview {
+        border:rgb(247, 247, 253)
+    }
+
+    .email-preview > td {
+        height: 80px;
+    }
+
+    .mobile div {
+        font-size: 1.2em;
+        padding: 0 8px;
+    }
+
+    .mobile > :first-child {
+        font-size: 1.3em;
+        font-family: roboto-medium, sans-serif;
+    }
+
+    .emails-folder-list {
+        flex-direction: row;
+    }
+
+    .folders-and-emails {
+        flex-direction: column;
+    }
+
+    .emails-list {
+        margin: 5px;
+        border: none;
+    }
+
+    .emails-folder-list {
+        border: 1px solid rgb(206, 206, 206);
+    }
+
+    .emails-folder-list :first-child {
+        display: none;
+    }
+
+    .emails-filter {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .emails-filter .isRead-filters {
+        padding: 10px;
+    }
+
+    .composeBtn {
+        display: flex;
+        justify-content: center;
+    }
 }

@@ -1,4 +1,5 @@
 import textLength from './text-length.cmps.js';
+import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     props: ['email'],
@@ -6,15 +7,23 @@ export default {
         textLength
     },
     template: `
-        <tr class="email-preview" @click="readMore(email)" :style="styleObject">
-            <td class="sender">{{senderName}}</td>
-            <td class="subject">
+        <tr class="email-preview desktop-view" @click="readMore(email)" :style="styleObject">
+            <td class="sender desktop">{{senderName}}</td>
+            <td class="subject desktop">
                 <text-length :txt="email.subject" :size="10" />
             </td>
-            <td class="body" :style="{'font-family': 'roboto-light, sans-serif'}">
+            <td class="body desktop" :style="{'font-family': 'roboto-light, sans-serif'}">
                 <text-length :txt="email.body" :size="40" />
             </td>
-            <td class="date">{{formattedDate}}</td>
+            <td class="date desktop">{{formattedDate}}</td>
+            
+            <td class="mobile">
+                <div>{{senderName}}</div>
+                <div>{{email.subject}}</div>
+                <div :style="{'font-family': 'roboto-light, sans-serif'}">
+                    <text-length :txt="email.body" :size="40" />
+                </div>
+            </td>
         </tr>
     `,
     data() {
@@ -40,12 +49,14 @@ export default {
         styleObject() {
             return {
                 'font-family': (this.email.isRead) ? 'roboto-light, sans-serif' :'roboto-medium, sans-serif',
-                'background-color': (this.email.isRead) ? '#f5f7f7' : '#fff',
+                'background-color': (this.email.isRead) ? 'rgb(243 252 253)' : '#fff',
             }
         }
     },
     methods: {
         readMore(email) {
+            this.email.isRead = true;
+            eventBus.$emit('update', this.email);
             if(email.status !== 'draft') this.$router.push('/email/' + this.email.id)
             else this.$router.push('/email/compose/' + this.email.id)
         }

@@ -2,7 +2,7 @@ import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     template: `
-    <section class="emails-folder-list flex direction-column align-center">
+    <section class="emails-folder-list flex align-center">
         <h3>Folders</h3>
         <h4 @click="filter('inbox')">Inbox</h4>
         <h4 @click="filter('starred')">Starred</h4>

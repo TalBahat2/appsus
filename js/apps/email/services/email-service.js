@@ -134,6 +134,76 @@ function _createEmails() {
                 status: 'sent',
                 to: 'valery@gmail.com'
             },
+            {
+                id: 'e108',
+                subject: 'Matan Crispel shared "CaSep21-Materials" with you',
+                body: 'Hi there, Matan Crispel (matan.cris@gmail.com) invited you to view the folder "CaSep21-Materials" on Dropbox.\n Enjoy!\n The Dropbox team',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'coding_academy@gmail.com',
+                status: 'inbox',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e109',
+                subject: 'New date for our meeting',
+                body: 'Hi there, I would like to change our meeting date for Wednesday, is it work for you?',
+                isRead: true,
+                sentAt: 1551133930655,
+                from: 'puki@gmail.com',
+                status: 'inbox',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e110',
+                subject: 'New Account Details',
+                body: 'Ta-da! You’ve joined your first Slack workspace and we couldn’t be more delighted. Here are your account details, along with some tips to help you get started.',
+                isRead: false,
+                sentAt: 1551999930655,
+                from: 'slack@slack.com',
+                status: 'inbox',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e111',
+                subject: 'Important update from YouTube API Services: Making the dislike count private',
+                body: 'Dear YouTube API developer,\nWe would like to inform you of upcoming changes to YouTube that will impact the data available via the Data API starting December 13, 2021.\nOn November 10, YouTube will be making the public dislike count private. Users will still be able to dislike videos, and creators will still have access to the dislike counts for their own videos in YouTube Studio. Learn more about this change in our blog post.\nTo make the dislike count private across the platform, we also will be removing public access to the dislike count data via our API.',
+                isRead: true,
+                sentAt: 1551131010655,
+                from: 'google_cloud@google.com',
+                status: 'inbox',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e112',
+                subject: 'Updates from our project',
+                body: 'Hi Roy, I have just Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, aliquid? Est veritatis eveniet, odit maiores sunt officiis consequuntur rem quo. Facere odio laudantium optio repellendus. Expedita maxime molestiae ullam? Nostrum.',
+                isRead: true,
+                sentAt: 1551131010655,
+                from: 'user@appsus.com',
+                status: 'sent',
+                to: 'roygil@gmail.com'
+            },
+            {
+                id: 'e113',
+                subject: 'פתיחת הרשמה לסמסטר אביב תשפ"ב',
+                body: 'שלום רב, היום נפתחה ההרשמה לסמסטר אביב תשפ"ב. המידע המלא מופיע באתר ההרשמה',
+                isRead: true,
+                sentAt: 1551771010655,
+                from: 'open_university@google.com',
+                status: 'inbox',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e114',
+                subject: 'About the last payment',
+                body: 'Hi Valery, please contact me about toe final payment. \n yours, \n Tal',
+                isRead: false,
+                sentAt: 1551771010655,
+                from: 'user@appsus.com',
+                status: 'sent',
+                to: 'valery@gmail.com'
+            },
         ]
     }
     utilService.saveToStorage(EMAILS_KEY, emails);
