@@ -42,9 +42,9 @@ const demoNotes = [
         info: {
             label: "do this and do that",
             todos: [
-                {txt: 'finish this code!', isDone: false},
-                {txt: 'Go to the Bar-Mizva', isDone: true},
-                {txt: 'Leave the Bar-Mizva', isDone: false}
+                { txt: 'finish this code!', isDone: false },
+                { txt: 'Go to the Bar-Mizva', isDone: true },
+                { txt: 'Leave the Bar-Mizva', isDone: false }
             ]
         }
     },
@@ -57,43 +57,42 @@ export const noteService = {
     saveEditedNote,
     createNote,
     remove,
-    changeColor
+    updateNote,
+    duplicate
 }
 
-function _createDemoNotes(){ 
+function _createDemoNotes() {
     return storageService.query(NOTES_KEY)
-        .then(notes=>{
-            if(notes.length === 0) utilService.saveToStorage(NOTES_KEY,demoNotes)
+        .then(notes => {
+            if (notes.length === 0) utilService.saveToStorage(NOTES_KEY, demoNotes)
         })
 }
 
 function query() {
     return storageService.query(NOTES_KEY)
-        // .then(notes => {
-            // if (notes.length === 0) {
-            //     _createDemoNotes()
-            //     return demoNotes
-            // }
-            // return notes;
-        // })
 }
 
 function saveNewNote(note) {
     return storageService.postFirst(NOTES_KEY, note)
 }
 
-function saveEditedNote(note){
-    storageService.put(NOTES_KEY,note)
+function saveEditedNote(note) {
+    storageService.put(NOTES_KEY, note)
 }
 
 function createNote(note) {
-    let info;
+    let info = {
+        txt: '',
+        url: '',
+        lable: '',
+    };
     if (note.noteType === 'noteTxt') info = { txt: note.input }
     else if (note.noteType === 'noteImg' || note.noteType === 'noteVid') info = { url: note.input }
     else if (note.noteType === 'noteTodos') info = { lable: note.input }
     const newNote = {
         type: note.noteType,
         info: info,
+        isPinned: false
     }
     return saveNewNote(newNote);
 }
@@ -102,6 +101,10 @@ function remove(noteId) {
     return storageService.remove(NOTES_KEY, noteId);
 }
 
-function changeColor(note){
-    return storageService.put(NOTES_KEY,note)
+function updateNote(note) {
+    return storageService.put(NOTES_KEY, note)
+}
+
+function duplicate(note){
+    return storageService.duplicateOnIndex(NOTES_KEY, note)
 }

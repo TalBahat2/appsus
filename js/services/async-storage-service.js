@@ -3,6 +3,7 @@ export const storageService = {
     get,
     post,
     postFirst,
+    duplicateOnIndex,
     put,
     remove,
     postMany
@@ -35,6 +36,17 @@ function postFirst(entityType, newEntity) {
             entities.unshift(newEntity);
             _save(entityType, entities)
             return newEntity;
+        })
+}
+
+function duplicateOnIndex(entityType, dupEntity) {
+    dupEntity.id = _makeId()
+    return query(entityType)
+        .then(entities => {
+            const idx = entities.findIndex(entity => entity.id === dupEntity.id);
+            entities.splice(idx, 0, dupEntity)
+            _save(entityType, entities)
+            return dupEntity;
         })
 }
 

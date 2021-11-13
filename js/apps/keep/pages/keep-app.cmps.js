@@ -25,52 +25,76 @@ export default {
     },
     created() {
         this.loadNotes();
-        eventBus.$on('remove',this.removeNote)
+        eventBus.$on('remove', this.removeNote)
         eventBus.$on('cancelEdit', this.cancelEdit)
         eventBus.$on('saveEdit', this.saveEdit)
         eventBus.$on('changeColor', this.changeColor)
+        eventBus.$on('togglePin', this.togglePin)
+        eventBus.$on('duplicate', this.duplicate)
     },
-    destroyed(){
-        eventBus.$off('remove',this.removeNote)
+    destroyed() {
+        eventBus.$off('remove', this.removeNote)
     },
     methods: {
         loadNotes() {
             noteService.query()
                 .then(notes => {
-                    this.notes = notes});
+                    this.notes = notes
+                });
         },
-        addNote(note){
+        addNote(note) {
             noteService.createNote(note)
-                .then(()=> this.loadNotes())
+                .then(() => this.loadNotes())
         },
-        removeNote(noteId){
+        removeNote(noteId) {
             noteService.remove(noteId)
-                .then(()=>this.loadNotes())
+                .then(() => this.loadNotes())
         },
-        cancelEdit(){
+        cancelEdit() {
             this.loadNotes()
         },
-        saveEdit(note){
+        saveEdit(note) {
             noteService.saveEditedNote(note)
         },
-        changeColor(note,color){
+        changeColor(note, color) {
             note.color = color;
-            noteService.changeColor(note)
-                .then(()=>this.loadNotes())
+            noteService.updateNote(note)
+                .then(() => this.loadNotes())
         },
         setFilter(filterBy) {
-            this.filterBy = filterBy;
+            let isTxtValue = false;
+            for (const prop in filterBy) {
+                if (filterBy[prop]) isTxtValue = true;
+            }
+            if (isTxtValue) this.filterBy = filterBy;
+            else this.filterBy = null
+        },
+        togglePin(note) {
+            note.isPinned = !note.isPinned;
+            console.log('pinned?', note.isPinned);
+            noteService.updateNote(note);
+        },
+        duplicate(note) {
+            noteService.duplicate(note)
+                .then(() => this.loadNotes())
         }
     },
     computed: {
-        notesToShow(){
+        notesToShow() {
+            console.log('this.filterBy', this.filterBy);
             if (!this.filterBy) return this.notes;
+            let notesToShow;
             const searchStr = this.filterBy.txt;
-
-            const notesToShow = this.notes.filter(note=> {
-                console.log('note.info.txt',note.info.txt);
-                return note.info.txt.includes(searchStr)
+            const type = this.filterBy.type;
+            notesToShow = this.notes.filter(note => {
+                console.log('note.type', note.type);
+                console.log('type', type);
+                return note.type === type
             })
+            if (type === 'noteTxt' || type === '')
+                notesToShow = this.notes.filter(note => {
+                    if (note.type === 'noteTxt') return note.info.txt.toLowerCase().includes(searchStr)
+                })
             return notesToShow
         }
     }

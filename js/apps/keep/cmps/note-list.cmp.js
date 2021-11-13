@@ -7,8 +7,15 @@ export default {
     props: ['notes'],
     template: `
         <section class="note-list">
-            <div v-for="note in notes" :key="note.id" class="note-preview-container">
-                <note-preview :note="note" />
+            <div>
+                Pinned notes:
+            </div>
+            <div class="note-list-container">
+                <note-preview :note="note" v-for="note in notes" v-if="note.isPinned" :key="note.id" class="note-preview-container" />
+            </div>
+            <hr>
+            <div class="note-list-container">
+                <note-preview :note="note" v-for="note in notes" v-if="!note.isPinned" :key="note.id" class="note-preview-container" />
             </div>
         </section>
     `,
