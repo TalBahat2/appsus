@@ -16,7 +16,7 @@ export default {
         <section class="note-preview"  :style="{backgroundColor: note.color}">
             <component :is="comp" :note="note" />
             <div v-if="editTxt">
-                <textarea rows="4" v-model="note.info.txt"/>
+                <textarea rows="4" v-model="note.info.txt" />
                 <div>
                     <i @click="saveEdit" class="fa fa-save hover-blue" title="Save changes"></i>
                     <i @click="cancelEdit(note)" class="fas fa-window-close hover-blue" title="Cancel changes"></i>
