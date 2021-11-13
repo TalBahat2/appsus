@@ -1,11 +1,51 @@
+.filter-add{
+    align-items: baseline;
+    justify-content: center;
+    gap: 50px;
+}
+
+.note-filter{
+    padding-top: 20px;
+}
+
+.filter-input{
+    height: 40px;
+    width: 300px;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.filter-select{
+    font-size: 1.2rem;
+    border: none;
+
+}
+
+.input-type{
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+.input-type i{
+    margin: 5px;
+}
+
+.add-form{
+    margin-top: 10px;
+}
+
 .note-preview-container {
     font-size: 18px;
     background-color: lightgoldenrodyellow;
     border: 1px solid black;
-    width: 200px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.note-list{
+    margin-top: 40px;
 }
 
 .note-preview{

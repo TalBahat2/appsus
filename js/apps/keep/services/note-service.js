@@ -88,12 +88,23 @@ function createNote(note) {
     };
     if (note.noteType === 'noteTxt') info = { txt: note.input }
     else if (note.noteType === 'noteImg' || note.noteType === 'noteVid') info = { url: note.input }
-    else if (note.noteType === 'noteTodos') info = { lable: note.input }
+    else if (note.noteType === 'noteTodos') {
+        info = {
+            label: note.input,
+            todos: [
+                {txt: 'Do this 1', isDone: false},
+                {txt: 'Do this 2', isDone: false},
+                {txt: 'Do this 3', isDone: false},
+                {txt: 'Do this 4', isDone: false},
+            ]
+            }
+    }
     const newNote = {
         type: note.noteType,
         info: info,
         isPinned: false
     }
+    console.log('newNote', newNote);
     return saveNewNote(newNote);
 }
 
