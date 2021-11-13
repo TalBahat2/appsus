@@ -12,6 +12,7 @@ export default {
                 <router-link to="/about" @click.native="toggleNav">About</router-link>
                 <router-link to="/email" @click.native="toggleNav">Email</router-link>
                 <router-link to="/keep" @click.native="toggleNav">Keep</router-link>
+                <router-link to="/book" @click.native="toggleNav">Books</router-link>
             </nav>
         </section>
     `,

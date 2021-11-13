@@ -5,7 +5,7 @@
 @import "parts/fonts.css";
 @import "apps/email/email-details.css";
 @import "apps/email/email-compose.css";
-
+@import "apps/books/books-app.css";
 
 * {
     box-sizing: border-box;
