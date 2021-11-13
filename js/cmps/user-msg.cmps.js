@@ -4,13 +4,13 @@ export default {
     template: `
     <transition name="fade">
         <div v-if="msg" class="user-msg">
-            <p>user message</p>
+            <p>{{msg}}</p>
         </div>
     </transition>
     `,
     data() {
         return {
-            msg: false,
+            msg: '',
         };
     },
     created() {
@@ -20,7 +20,7 @@ export default {
         showMsg(msg) {
             this.msg = msg;
             setTimeout(() => {
-                this.msg = null;
+                this.msg = '';
             }, 3000);
         }
     },

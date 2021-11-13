@@ -8,7 +8,7 @@ export default {
         <h4 @click="filter('starred')">Starred</h4>
         <h4 @click="filter('sent')">Sent</h4>
         <h4 @click="filter('trash')">Trash</h4>
-        <h4>Drafts</h4>
+        <h4 @click="filter('draft')">Drafts</h4>
     </section>
     `,
     data() {

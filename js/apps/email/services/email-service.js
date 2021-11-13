@@ -9,7 +9,8 @@ export const emailService = {
     getById,
     moveToTrash,
     deleteEmail,
-    sendEmail
+    saveEmail,
+    update
 }
 
 function query(filterBy) {
@@ -51,8 +52,12 @@ function deleteEmail(emailId) {
     return storageService.remove(EMAILS_KEY ,emailId);
 }
 
-function sendEmail(email) {
+function saveEmail(email) {
     storageService.post(EMAILS_KEY, email);
+}
+
+function update(email) {
+    storageService.put(EMAILS_KEY, email)
 }
 
 function _createEmails() {

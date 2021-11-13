@@ -39,7 +39,8 @@ export default {
             .then(emails => this.emails = emails);
         eventBus.$on('filter', this.filter);
         eventBus.$on('deleteEmail', this.deleteEmail); 
-        eventBus.$on('sendEmail', this.sendEmail); 
+        eventBus.$on('saveEmail', this.saveEmail); 
+        eventBus.$on('update', this.update);
     },
     methods: {
         filter(key, value) {
@@ -50,8 +51,11 @@ export default {
         deleteEmail(emailId) {
             emailService.deleteEmail(emailId);
         },
-        sendEmail(email) {
-            emailService.sendEmail(email);
+        saveEmail(email) {
+            emailService.saveEmail(email);
+        },
+        update(email) {
+            emailService.update(email);
         }
     },
 }

@@ -1,7 +1,19 @@
 .user-msg {
     position: fixed;
-    top: 40px;
+    top: 100px;
     right: 20px;
+    width: 200px;
+    /* height: 100px; */
+    background-color: rgb(201, 201, 251);
+    border-radius: 10px;
+}
+
+.user-msg p {
+    font-family: roboto-medium, sans-serif;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
 }
 
 .success {

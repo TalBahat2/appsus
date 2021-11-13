@@ -11,13 +11,16 @@ export default {
             <p class="sender">from: {{email.from}}</p>
             <hr>
             <p class="body">{{email.body}}</p>
-            <div v-if="email.status !== 'trash'" @click="moveToTrash">
-                <i class="fas fa-trash"></i>
+            <hr>
+            <div class="flex btns">
+                <router-link :to="'/email'">
+                    <i class="fas fa-arrow-circle-left" title="back to emails"></i>
+                </router-link>
+                <div v-if="email.status !== 'trash'" @click="moveToTrash">
+                    <i class="fas fa-trash"></i>
+                </div>
+                <router-link v-else :to="'/email'" @click.native="remove">Delete permanently</router-link>
             </div>
-            <router-link v-else :to="'/email'" @click.native="remove">Delete permanently</router-link>
-            <router-link :to="'/email'">
-                <i class="fas fa-arrow-circle-left" title="back to emails"></i>
-            </router-link>
         </section>
     `,
     data() {
@@ -32,12 +35,13 @@ export default {
     },
     methods: {
         moveToTrash() {
-            emailService.moveToTrash(this.email)
-                .then(updatedEmail => this.email = updatedEmail)
-            // TODO: pop a userMsg that email has been removed to trash
+            this.email.status = 'trash';
+            emailService.update(this.email);
+            if (this.email.status === 'trash') eventBus.$emit('showMsg', 'Email moved to trash!')            
         },
         remove() {
             eventBus.$emit('deleteEmail', this.email.id)
+            eventBus.$emit('showMsg', 'Email deleted permanently!')
         }
     }
 }
