@@ -9,7 +9,8 @@ const demoNotes = [
         isPinned: true,
         info: {
             txt: "Fullstack Me Baby 1!"
-        }
+        },
+        color: '#d54f4f'
     },
     {
         id: "n102",
@@ -17,7 +18,8 @@ const demoNotes = [
         isPinned: false,
         info: {
             url: "https://media.giphy.com/media/26u4lwog9FVOxUGiI/giphy.gif"
-        }
+        },
+        color: '#e5e528'
     },
     {
         id: "n103",
@@ -25,7 +27,8 @@ const demoNotes = [
         isPinned: false,
         info: {
             url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131603.jpg"
-        }
+        },
+        color: '#86c1c1'
     },
     {
         id: "n104",
@@ -33,7 +36,8 @@ const demoNotes = [
         isPinned: false,
         info: {
             url: "https://www.youtube.com/watch?v=0uHCMt3wm04"
-        }
+        },
+        color: '#86c1c1'
     },
     {
         id: "n105",
@@ -46,7 +50,8 @@ const demoNotes = [
                 { txt: 'Go to the Bar-Mizva', isDone: true, isEdit: false },
                 { txt: 'Leave the Bar-Mizva', isDone: false, isEdit: false }
             ]
-        }
+        },
+        color: '#76cd6e'
     },
     {
         id: "n106",
@@ -54,7 +59,8 @@ const demoNotes = [
         isPinned: true,
         info: {
             txt: "The dinosaurs looked at Chuck Norris the wrong way once. You know what happened to them."
-        }
+        },
+        color: '#d54f4f'
     },
     {
         id: "n107",
@@ -62,7 +68,8 @@ const demoNotes = [
         isPinned: true,
         info: {
             txt: "You define your own life. Don’t let other people write your script."
-        }
+        },
+        color: '#76cd6e'
     },
     {
         id: "n108",
@@ -70,7 +77,8 @@ const demoNotes = [
         isPinned: false,
         info: {
             url: "https://media.wired.com/photos/593261cab8eb31692072f129/master/pass/85120553.jpg"
-        }
+        },
+        color: '#e5e528'
     },
     {
         id: "n109",
@@ -78,7 +86,8 @@ const demoNotes = [
         isPinned: false,
         info: {
             txt: "Chuck Norris can kill two stones with one bird."
-        }
+        },
+        color: '#86c1c1'
     },
     {
         id: "n110",
@@ -86,7 +95,8 @@ const demoNotes = [
         isPinned: false,
         info: {
             txt: "You don’t always need a plan. Sometimes you just need to breathe, trust, let go and see what happens."
-        }
+        },
+        color: '#fffdf7'
     },
     {
         id: "n111",
@@ -94,15 +104,17 @@ const demoNotes = [
         isPinned: false,
         info: {
             url: "https://media.giphy.com/media/wW95fEq09hOI8/giphy.gif"
-        }
+        },
+        color: '#e5e528'
     },
     {
         id: "n112",
         type: "noteImg",
         isPinned: false,
         info: {
-            url: "https://media.giphy.com/media/s3d5ugcxFDApG/giphy.gif"
-        }
+            url: "https://media.giphy.com/media/nFjDu1LjEADh6/giphy.gif"
+        },
+        color: '#76cd6e'
     },
     {
         id: "n113",
@@ -118,7 +130,26 @@ const demoNotes = [
                 { txt: 'pizza', isDone: false, isEdit: false },
                 { txt: 'pizza', isDone: false, isEdit: false },
             ]
-        }
+        },
+        color: '#fffdf7'
+    },
+    {
+        id: "n114",
+        type: "noteImg",
+        isPinned: false,
+        info: {
+            url: "https://pbs.twimg.com/profile_images/669504196815794176/mUhbcYLH_400x400.jpg"
+        },
+        color: '#86c1c1'
+    },
+    {
+        id: "n115",
+        type: "noteTxt",
+        isPinned: true,
+        info: {
+            txt: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+        },
+        color: '#86c1c1'
     },
 ]
 _createDemoNotes()

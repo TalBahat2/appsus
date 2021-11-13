@@ -80,15 +80,26 @@ a{
     background-color: rgb(87, 183, 221);
 }
 
+.app-home{
+    background-image: url(../img/home-page.jpg);
+    object-fit: cover;
+    background-size: 2000px;
+    background-repeat: no-repeat ;
+    background-position: center;
+}
+
 .app-home img {
     width: 100%;
     min-width: 1200px;
 }
 
 .app-home h1 {
+    padding-top: 50px;
     font-family: genos-regular, sans-serif;
     text-align: center;
     font-size: 5em;
+    color: #ffffff;
+    text-shadow: 0px 0px 9px black;
 }
 
 .app-about h1 {
