@@ -81,7 +81,7 @@ a{
 }
 
 .app-home{
-    background-image: url("../img/home-page.jpg");
+    background-image: url(../img/home-page.jpg);
     object-fit: cover;
     background-size: 2000px;
     background-repeat: no-repeat ;
