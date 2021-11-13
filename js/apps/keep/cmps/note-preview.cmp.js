@@ -27,7 +27,13 @@ export default{
                 <div>
                     <i @click="saveEdit" class="fa fa-save" title="Save changes"></i>
                     <i @click="cancelEdit(note)" class="fas fa-window-close" title="Cancel changes"></i>
-
+                </div>
+            </div>
+            <div v-if="editTodos">
+                <input v-model="note.info.label" />
+                <div>
+                    <i @click="saveEdit" class="fa fa-save" title="Save changes"></i>
+                    <i @click="cancelEdit(note)" class="fas fa-window-close" title="Cancel changes"></i>
                 </div>
             </div>
             <div>
@@ -55,6 +61,7 @@ export default{
             comp: null,
             editTxt: false,
             editImg: false,
+            editTodos: false,
             newImgUrl: '',
             colorPalette: false,
         }
@@ -72,6 +79,8 @@ export default{
             }else if(note.type === 'noteImg' ||note.type === 'noteVid'){
                 this.editImg = true;
                 this.newImgUrl = '';
+            }else if(note.type === 'noteTodos'){
+                this.editTodos = true;
             }
         },
         saveEdit(){
@@ -81,10 +90,12 @@ export default{
             eventBus.$emit('saveEdit', this.note)
             this.editTxt = false
             this.editImg = false
+            this.editTodos = false
         },
         cancelEdit(){
                 this.editTxt = false
                 this.editImg = false
+                this.editTodos = false
 
             eventBus.$emit('cancelEdit')
         },

@@ -55,6 +55,7 @@ export default {
         },
         saveEdit(note) {
             noteService.saveEditedNote(note)
+                .then(() => this.loadNotes())
         },
         changeColor(note, color) {
             note.color = color;
@@ -71,7 +72,6 @@ export default {
         },
         togglePin(note) {
             note.isPinned = !note.isPinned;
-            console.log('pinned?', note.isPinned);
             noteService.updateNote(note);
         },
         duplicate(note) {
@@ -81,14 +81,11 @@ export default {
     },
     computed: {
         notesToShow() {
-            console.log('this.filterBy', this.filterBy);
             if (!this.filterBy) return this.notes;
             let notesToShow;
             const searchStr = this.filterBy.txt;
             const type = this.filterBy.type;
             notesToShow = this.notes.filter(note => {
-                console.log('note.type', note.type);
-                console.log('type', type);
                 return note.type === type
             })
             if (type === 'noteTxt' || type === '')
