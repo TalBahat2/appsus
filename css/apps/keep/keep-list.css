@@ -1,36 +1,35 @@
-.filter-add{
+.filter-add {
     align-items: baseline;
     justify-content: center;
     gap: 50px;
 }
 
-.note-filter{
+.note-filter {
     padding-top: 20px;
 }
 
-.filter-input{
+.filter-input {
     height: 40px;
     width: 300px;
     font-size: 1.2rem;
     border: none;
 }
 
-.filter-select{
+.filter-select {
     font-size: 1.2rem;
     border: none;
-
 }
 
-.input-type{
+.input-type {
     font-size: 1.5rem;
     margin: 10px;
 }
 
-.input-type i{
+.input-type i {
     margin: 5px;
 }
 
-.add-form{
+.add-form {
     margin-top: 10px;
 }
 
@@ -38,30 +37,38 @@
     font-size: 18px;
     background-color: lightgoldenrodyellow;
     border: 1px solid black;
-    width: 350px;
+    /* width: 350px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 15px;
+    break-inside: avoid;
 }
 
-.note-list{
+.note-list {
     margin-top: 40px;
 }
 
-.note-preview{
+.note-preview {
     padding: 5px;
+}
 
+.note-preview-container:hover {
+    transform: scale(1.001);
+    box-shadow: 4px 4px 9px 1px;
+    transition: 0.2s;
 }
 
 .note-list-container {
     margin: 0;
     /* padding: 15px; */
     list-style: none;
-    display: flex;
+    columns: 4;
+    /* display: flex;
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; */
 }
 
 .note-preview img {
@@ -78,7 +85,7 @@
     font-size: 0.8rem;
 }
 
-.strike-out{
+.strike-out {
     text-decoration: line-through;
 }
 
@@ -86,8 +93,12 @@
     position: relative;
 }
 
-.set-color:hover {
+.hover-blue:hover {
     color: blue;
+}
+
+.edit-menu i {
+    margin: 3px;
 }
 
 .drop-down-colors {
@@ -99,4 +110,44 @@
     left: -40px;
     gap: 4px;
     background-color: rgba(112, 112, 112, 0.376);
+}
+
+.add-new-line {
+    cursor: pointer;
+}
+
+@media (max-width: 1550px) {
+    .note-list-container {
+        columns: 3;
+    }
+}
+
+@media (max-width: 1150px) {
+    .note-list-container {
+        columns: 2;
+    }
+}
+
+@media (max-width: 920px) {
+    .filter-add {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: unset
+    }
+}
+
+@media (max-width: 750px) {
+    .note-list-container {
+        columns: 1;
+    }
+}
+
+@media (max-width: 520px) {
+    .filter-input {
+        width: 200px;
+    }
+    .input-type {
+        margin: 4px;
+    }
 }

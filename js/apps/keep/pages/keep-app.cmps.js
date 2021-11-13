@@ -54,6 +54,7 @@ export default {
         },
         cancelEdit() {
             this.loadNotes()
+
         },
         saveEdit(note) {
             noteService.saveEditedNote(note)
@@ -61,6 +62,7 @@ export default {
         },
         changeColor(note, color) {
             note.color = color;
+            console.log(note);
             noteService.updateNote(note)
                 .then(() => this.loadNotes())
         },
